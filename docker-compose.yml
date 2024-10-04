@@ -1,0 +1,70 @@
+services:
+ php:
+  image: php:latest
+  container_name: php_container
+  volumes:
+    - ./php:/usr/src/app
+  working_dir: /usr/src/app
+  command: php hello.php
+  networks:
+    - asl_network
+ ruby:
+  image: ruby:latest
+  container_name: ruby_container
+  volumes:
+    - ./ruby:/usr/src/app
+  working_dir: /usr/src/app
+  command: bash -c "ruby hello.rb && tail -f /dev/null"
+  networks:
+    - asl_network
+ python:
+    image: python:latest
+    container_name: python_container
+    volumes:
+      - ./python:/usr/src/app
+    working_dir: /usr/src/app
+    command: python hello.py
+    networks:
+      - asl_network
+ nodejs:
+    image: node:latest
+    container_name: nodejs_container
+    volumes:
+      - ./node:/usr/src/app
+    working_dir: /usr/src/app
+    command: node hello.js
+    networks:
+      - asl_network
+ c:
+    image: gcc:latest
+    container_name: c_container
+    volumes:
+      - ./c:/usr/src/app
+    working_dir: /usr/src/app
+    command: bash -c "gcc -o hello hello.c && ./hello"
+    # gcc -o hello hello.c: This compiles the hello.c file into an executable named hello.
+    # ./hello: This runs the hello executable.
+    networks:
+      - asl_network
+ java:
+    image: openjdk:latest
+    container_name: java_container
+    volumes:
+      - ./java:/usr/src/app
+    working_dir: /usr/src/app
+    command: java Hello.java
+    networks:
+      - asl_network
+ golang:
+    image: golang:latest
+    container_name: golang_container
+    volumes:
+      - ./golang:/usr/src/app
+    working_dir: /usr/src/app
+    command: go run hello.go
+    networks:
+      - asl_network
+
+networks:
+  asl_network:
+    driver: bridge
