@@ -107,5 +107,3 @@ This project is licensed under the MIT License.
 📹 Link to Overview Video
 
 Showcase Presentation Video
-
-You can now copy this and paste it into your `README.md` file in your GitHub repository.
