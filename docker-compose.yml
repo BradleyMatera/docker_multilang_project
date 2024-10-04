@@ -1,70 +1,97 @@
-services:
- php:
-  image: php:latest
-  container_name: php_container
-  volumes:
-    - ./php:/usr/src/app
-  working_dir: /usr/src/app
-  command: php hello.php
-  networks:
-    - asl_network
- ruby:
-  image: ruby:latest
-  container_name: ruby_container
-  volumes:
-    - ./ruby:/usr/src/app
-  working_dir: /usr/src/app
-  command: bash -c "ruby hello.rb && tail -f /dev/null"
-  networks:
-    - asl_network
- python:
-    image: python:latest
-    container_name: python_container
-    volumes:
-      - ./python:/usr/src/app
-    working_dir: /usr/src/app
-    command: python hello.py
-    networks:
-      - asl_network
- nodejs:
-    image: node:latest
-    container_name: nodejs_container
-    volumes:
-      - ./node:/usr/src/app
-    working_dir: /usr/src/app
-    command: node hello.js
-    networks:
-      - asl_network
- c:
-    image: gcc:latest
-    container_name: c_container
-    volumes:
-      - ./c:/usr/src/app
-    working_dir: /usr/src/app
-    command: bash -c "gcc -o hello hello.c && ./hello"
-    # gcc -o hello hello.c: This compiles the hello.c file into an executable named hello.
-    # ./hello: This runs the hello executable.
-    networks:
-      - asl_network
- java:
-    image: openjdk:latest
-    container_name: java_container
-    volumes:
-      - ./java:/usr/src/app
-    working_dir: /usr/src/app
-    command: java Hello.java
-    networks:
-      - asl_network
- golang:
-    image: golang:latest
-    container_name: golang_container
-    volumes:
-      - ./golang:/usr/src/app
-    working_dir: /usr/src/app
-    command: go run hello.go
-    networks:
-      - asl_network
+version: '3.9' # Defining the version of the Docker Compose file format for compatibility.
 
+# The services section defines multiple containers, each for a different programming language.
+services:
+  # PHP service
+  php:
+    image: php:latest # Using the latest version of the official PHP Docker image.
+    container_name: php_container # Assigning a custom container name for easy reference.
+    volumes:
+      - ./php:/usr/src/app # Mounting the local 'php' directory to the container's '/usr/src/app' directory.
+      # This allows us to work on files locally and reflect those changes inside the container without rebuilding.
+    working_dir: /usr/src/app # The default directory when running commands inside the container.
+    command: php hello.php # Running the PHP script 'hello.php' as the container starts.
+    networks:
+      - asl_network # Connecting to the 'asl_network' bridge for internal communication between services.
+
+  # Ruby service
+  ruby:
+    image: ruby:latest # Using the latest Ruby image for the container.
+    container_name: ruby_container # Custom name for easy identification.
+    volumes:
+      - ./ruby:/usr/src/app # Mounting the local 'ruby' directory into the container.
+    working_dir: /usr/src/app # Defining where commands are executed inside the container.
+    command: bash -c "ruby hello.rb && tail -f /dev/null" 
+    # Explanation: `bash -c` allows running multiple commands in sequence. 
+    # The Ruby script 'hello.rb' is executed, and then `tail -f /dev/null` is used to keep the container running 
+    # since Docker would otherwise shut down after executing the script. This is useful in a development setup.
+    networks:
+      - asl_network # Connected to the internal network for communication with other containers.
+
+  # Python service
+  python:
+    image: python:latest # Using the latest Python image.
+    container_name: python_container # Custom container name for tracking in logs or with commands.
+    volumes:
+      - ./python:/usr/src/app # Mounting local 'python' directory inside the container.
+    working_dir: /usr/src/app # Commands will execute from this directory inside the container.
+    command: python hello.py # Runs the 'hello.py' Python script when the container starts.
+    networks:
+      - asl_network # Connected to the bridge network for inter-service communication.
+
+  # Node.js service
+  nodejs:
+    image: node:latest # Using the latest Node.js image.
+    container_name: nodejs_container # Assigning a readable name for this Node.js container.
+    volumes:
+      - ./node:/usr/src/app # Mounting local 'node' directory inside the container.
+    working_dir: /usr/src/app # This sets the working directory to where the code resides.
+    command: node hello.js # Runs the Node.js script 'hello.js' on container startup.
+    networks:
+      - asl_network # Linking to the network for cross-container communication.
+
+  # C (gcc) service
+  c:
+    image: gcc:latest # Using the latest GCC (GNU Compiler Collection) image to compile C code.
+    container_name: c_container # Custom container name for easy access.
+    volumes:
+      - ./c:/usr/src/app # Mounting local 'c' directory to work on C files.
+    working_dir: /usr/src/app # The working directory where commands execute.
+    command: bash -c "gcc -o hello hello.c && ./hello" 
+    # Explanation:
+    # `gcc -o hello hello.c` compiles the C file 'hello.c' into an executable file called 'hello'.
+    # `./hello` runs the compiled executable.
+    networks:
+      - asl_network # Connected to the network for potential interaction with other containers.
+
+  # Java service
+  java:
+    image: openjdk:latest # Using the latest OpenJDK image for running Java code.
+    container_name: java_container # Giving the Java container a custom name.
+    volumes:
+      - ./java:/usr/src/app # Mounting local 'java' directory into the container.
+    working_dir: /usr/src/app # Directory where commands execute.
+    command: javac Hello.java && java Hello
+    # Explanation:
+    # `javac Hello.java` compiles the 'Hello.java' file into bytecode.
+    # `java Hello` runs the compiled bytecode in the Java Virtual Machine (JVM).
+    networks:
+      - asl_network # Connected to the internal bridge network.
+
+  # Go (Golang) service
+  golang:
+    image: golang:latest # Using the latest Golang image for running Go code.
+    container_name: golang_container # Assigning a unique name for the Go container.
+    volumes:
+      - ./golang:/usr/src/app # Mounting the local 'golang' directory into the container.
+    working_dir: /usr/src/app # Setting the working directory inside the container.
+    command: go run hello.go # Executes the Go program 'hello.go' at container startup.
+    networks:
+      - asl_network # Connected to the internal network for communication.
+
+# Network configuration
 networks:
   asl_network:
-    driver: bridge
+    driver: bridge 
+    # The 'bridge' driver creates an internal Docker network that allows the containers to communicate with each other.
+    # Each service can access others on this network, creating an isolated environment for communication between containers.
