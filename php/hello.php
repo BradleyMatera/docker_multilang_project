@@ -1,11 +1,16 @@
-/* php is not something i want to dive into, but i can see how it can be useful for web development
-i  learn just a hello world from php and after understanding docker */
+<?php
+// PHP is a server-side language commonly used to create dynamic web pages.
+// Below is a simple script that prints out a "Hello World" message along with the current date and time.
 
-<?php // php is a server side language that is used to create dynamic web pages,
-// this is just a simple hello world in the server side
-echo "Hello ASL! The date is: " . date('Y-m-d H:i:s') . "\n"; # 
-// this will printout the current date and time, echo is used to print out the string, echo calls the function date
-?>
-# https://www.php.net/manual/en/tutorial.firstpage.php
+// The 'echo' command is used to output strings in PHP. The 'date' function formats the current date and time.
+
+echo "Hello ASL! The date is: " . date('Y-m-d H:i:s') . "\n";
+
+// The above code uses PHP's 'date' function to format and display the current date and time.
+// echo calls the function 'date' and the format 'Y-m-d H:i:s' gives the output as 'Year-Month-Day Hour:Minute:Second'.
+
+// Sources for learning more about PHP basics:
+// https://www.php.net/manual/en/tutorial.firstpage.php
 // https://www.php.net/manual/en/language.basic-syntax.comments.php
 // https://www.php.net/manual/en/function.date.php
+?>
