@@ -1,9 +1,12 @@
-🚀 Docker Multi-Language Project 🌍
+# 🚀 **Docker Multi-Language Project** 🌍
 
-This project demonstrates a multi-language application setup using Docker. Each service runs in its own Docker container, showcasing how different programming languages can be containerized and orchestrated through Docker Compose.
+This project demonstrates a **multi-language application setup** using **Docker**. Each service runs in its own Docker container, showcasing how different programming languages can be containerized and orchestrated through **Docker Compose**.
 
-🗂️ Project Structure
+---
 
+## 🗂️ **Project Structure**
+
+```bash
 docker_multilang_project/
 ├── java/                   # Java service
 │   └── Hello.java
@@ -23,24 +26,25 @@ docker_multilang_project/
 ├── docker-compose.yml       # Docker Compose configuration
 └── README.md               # Project documentation
 
+```
+
 ⚙️ Getting Started
 
 Prerequisites
 
 Before running this project, ensure you have the following installed:
 
-	•	🐳 Docker
-	•	🛠️ Docker Compose
+🐳 Docker
+
+🛠️ Docker Compose
 
 Installation & Setup
 
-	1.	Clone the repository:
+1. Clone the repository:
 
 git clone https://github.com/BradleyMatera/docker_multilang_project.git
 cd docker_multilang_project
-
-
-	2.	Run the containers:
+2. Run the containers:
 
 docker-compose up
 
@@ -103,3 +107,5 @@ This project is licensed under the MIT License.
 📹 Link to Overview Video
 
 Showcase Presentation Video
+
+You can now copy this and paste it into your `README.md` file in your GitHub repository.
