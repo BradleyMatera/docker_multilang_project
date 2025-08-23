@@ -1,10 +1,19 @@
-# 🚀 **Docker Multi-Language Project** 🌍
+# 🚀 Docker Multi-Language Project 🌍  
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white&style=for-the-badge)](https://www.docker.com/)  
+[![Made with Java](https://img.shields.io/badge/Java-007396?logo=java&logoColor=white&style=flat-square)]()
+[![Made with Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=flat-square)]()
+[![Made with Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white&style=flat-square)]()
+[![Made with Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white&style=flat-square)]()
+[![Made with Ruby](https://img.shields.io/badge/Ruby-CC342D?logo=ruby&logoColor=white&style=flat-square)]()
+[![Made with PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white&style=flat-square)]()
+[![Made with C](https://img.shields.io/badge/C-A8B9CC?logo=c&logoColor=white&style=flat-square)]()
 
-This project demonstrates a **multi-language application setup** using **Docker**. Each service runs in its own Docker container, showcasing how different programming languages can be containerized and orchestrated through **Docker Compose**.
+> Multi-language containerized **Hello World** project using **Docker Compose**.  
+> Each service runs in its own container, showcasing how different programming languages can be orchestrated together.
 
 ---
 
-## 🗂️ **Project Structure**
+## 📂 Project Structure
 
 ```bash
 docker_multilang_project/
@@ -12,7 +21,7 @@ docker_multilang_project/
 │   └── Hello.java
 ├── c/                      # C service
 │   ├── hello.c
-│   └── hello               # Compiled binary file
+│   └── hello               # Compiled binary
 ├── golang/                 # Go service
 │   └── hello.go
 ├── node/                   # Node.js service
@@ -24,88 +33,109 @@ docker_multilang_project/
 ├── ruby/                   # Ruby service
 │   └── hello.rb
 ├── docker-compose.yml       # Docker Compose configuration
-└── README.md               # Project documentation
-
+└── README.md               # Documentation
 ```
 
-⚙️ Getting Started
+---
 
-Prerequisites
+## ⚙️ Getting Started
 
-Before running this project, ensure you have the following installed:
+### ✅ Prerequisites
+- [🐳 Docker](https://docs.docker.com/get-docker/)  
+- [🛠️ Docker Compose](https://docs.docker.com/compose/install/)  
 
-🐳 Docker
-
-🛠️ Docker Compose
-
-Installation & Setup
-
-1. Clone the repository:
-
+### 📥 Installation
+```bash
+# Clone repository
 git clone https://github.com/BradleyMatera/docker_multilang_project.git
 cd docker_multilang_project
-2. Run the containers:
 
+# Start all containers
 docker-compose up
+```
 
-This will start all the language services defined in the docker-compose.yml.
-
-💻 Included Services
-
-Each service runs its respective “Hello World” program:
-
-Language	Directory	Command	Container Name
-PHP	php/	php hello.php	php_container
-Ruby	ruby/	ruby hello.rb && tail -f /dev/null	ruby_container
-Python	python/	python hello.py	python_container
-Node.js	node/	node hello.js	nodejs_container
-C	c/	gcc -o hello hello.c && ./hello	c_container
-Java	java/	java Hello.java	java_container
-Go	golang/	go run hello.go	golang_container
-
-🛠️ Managing Containers
-
-Starting the Services:
-
-To run all services:
-
-docker-compose up
-
-Stopping the Services:
-
-To stop and remove all running containers:
-
+### 🛑 Stop Containers
+```bash
 docker-compose down
+```
 
-📝 Adding a New Language
+---
 
-	1.	Create a directory for the new language (e.g., perl/).
-	2.	Add the script (e.g., hello.pl) to the newly created directory.
-	3.	Update docker-compose.yml by adding a new service.
-	4.	Re-run the containers with docker-compose up.
+## 💻 Included Services
 
-🌐 Networks
+| Language  | Directory | Command | Container Name |
+|-----------|-----------|---------|----------------|
+| 🐘 PHP | `php/` | `php hello.php` | `php_container` |
+| 💎 Ruby | `ruby/` | `ruby hello.rb && tail -f /dev/null` | `ruby_container` |
+| 🐍 Python | `python/` | `python hello.py` | `python_container` |
+| 🟢 Node.js | `node/` | `node hello.js` | `nodejs_container` |
+| ⚙️ C | `c/` | `gcc -o hello hello.c && ./hello` | `c_container` |
+| ☕ Java | `java/` | `java Hello.java` | `java_container` |
+| 🐹 Go | `golang/` | `go run hello.go` | `golang_container` |
 
-The project uses a custom bridge network named asl_network for communication between the containers if needed.
+---
 
-🎯 Advanced Setup
+## 🛠️ Managing Containers
 
-Each service is isolated in its own container, using Docker images for each language. Here’s a breakdown of some key components:
+<details>
+<summary>▶ Start Services</summary>
 
-	•	Volumes are used to map your local files to the container.
-	•	Working Directories ensure all commands execute in the proper directory inside the container.
-	•	Commands define the specific task that each container will run when started.
+```bash
+docker-compose up
+```
+</details>
 
-🤝 Contributions
+<details>
+<summary>⏹ Stop Services</summary>
 
-Contributions are welcome! Feel free to fork this project and submit a pull request.
+```bash
+docker-compose down
+```
+</details>
 
-📄 License
+---
 
-This project is licensed under the MIT License.
+## 📝 Adding a New Language
+1. Create a directory for the new language (e.g., `perl/`).  
+2. Add your script (e.g., `hello.pl`).  
+3. Update `docker-compose.yml` with a new service entry.  
+4. Restart containers:  
+   ```bash
+   docker-compose up
+   ```
 
-📹 Link to Overview Video
+---
 
-https://www.youtube.com/watch?v=mPmO2qa9H9w
+## 🌐 Networks
+- Uses a **custom bridge network** (`asl_network`)  
+- Enables communication between containers when required.  
 
-Showcase Presentation Video
+---
+
+## 🎯 Advanced Setup
+- **Volumes** map local files into containers.  
+- **Working Directories** ensure commands run in correct paths.  
+- **Commands** define the execution behavior of each container.  
+
+---
+
+## 🤝 Contributions
+Contributions are welcome!  
+Fork the repo → Create a branch → Submit a PR.  
+
+---
+
+## 📄 License
+[MIT License](LICENSE)  
+
+---
+
+## 📹 Showcase Presentation
+[![YouTube Overview](https://img.youtube.com/vi/mPmO2qa9H9w/0.jpg)](https://www.youtube.com/watch?v=mPmO2qa9H9w)  
+*(click to watch the demo video)*  
+
+---
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=BradleyMatera&style=flat-square&color=blue" alt="Profile views" />
+</p>
