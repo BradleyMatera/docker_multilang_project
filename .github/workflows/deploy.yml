@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: cd frontend && bun install
 
-      - name: Build and export static site
+      - name: Build static site
         run: cd frontend && bun run build:pages
 
       - name: Add .nojekyll
