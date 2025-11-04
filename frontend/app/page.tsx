@@ -33,7 +33,7 @@ const steps = [
           <b>Design System:</b> NextUI provides accessible, themeable, animated components.<br />
           <b>Deployment:</b> GitHub Actions builds and deploys the site to GitHub Pages.
         </p>
-        <img src="/globe.svg" alt="Architecture Diagram" className="mx-auto my-4 w-48 h-48" />
+        <img src="/docker_multilang_project/globe.svg" alt="Architecture Diagram" className="mx-auto my-4 w-48 h-48" />
       </>
     ),
   },
