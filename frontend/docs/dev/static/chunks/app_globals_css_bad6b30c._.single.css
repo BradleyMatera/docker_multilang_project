@@ -2,6 +2,9 @@
 @layer properties {
   @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
     *, :before, :after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
       --tw-scale-x: 1;
       --tw-scale-y: 1;
       --tw-scale-z: 1;
@@ -69,9 +72,6 @@
       --tw-backdrop-sepia: initial;
       --tw-duration: initial;
       --tw-content: "";
-      --tw-translate-x: 0;
-      --tw-translate-y: 0;
-      --tw-translate-z: 0;
     }
   }
 }
@@ -383,8 +383,16 @@ button, input:where([type="button"], [type="reset"], [type="submit"]) {
   inset-inline-start: calc(var(--cursor-hit-x) * -1);
 }
 
+.top-1\/2 {
+  top: 50%;
+}
+
 .top-\[var\(--navbar-height\)\] {
   top: var(--navbar-height);
+}
+
+.left-1\/2 {
+  left: 50%;
 }
 
 .isolate {
@@ -619,6 +627,16 @@ button, input:where([type="button"], [type="reset"], [type="submit"]) {
   transform-origin: 100%;
 }
 
+.-translate-x-1\/2 {
+  --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+
+.-translate-y-1\/2 {
+  --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+
 .scale-50 {
   --tw-scale-x: 50%;
   --tw-scale-y: 50%;
@@ -841,6 +859,10 @@ button, input:where([type="button"], [type="reset"], [type="submit"]) {
   border-style: solid;
 }
 
+.border-foreground {
+  border-color: var(--foreground);
+}
+
 .border-primary {
   border-color: var(--primary);
 }
@@ -940,6 +962,20 @@ button, input:where([type="button"], [type="reset"], [type="submit"]) {
 @supports (color: color-mix(in lab, red, red)) {
   .bg-background\/80 {
     background-color: color-mix(in oklab, var(--background) 80%, transparent);
+  }
+}
+
+.bg-foreground {
+  background-color: var(--foreground);
+}
+
+.bg-foreground\/10 {
+  background-color: var(--foreground);
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .bg-foreground\/10 {
+    background-color: color-mix(in oklab, var(--foreground) 10%, transparent);
   }
 }
 
@@ -1057,6 +1093,10 @@ button, input:where([type="button"], [type="reset"], [type="submit"]) {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.text-background {
+  color: var(--background);
 }
 
 .text-current {
@@ -1189,6 +1229,26 @@ button, input:where([type="button"], [type="reset"], [type="submit"]) {
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
 
+.ring {
+  --tw-ring-shadow: var(--tw-ring-inset, ) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+
+.ring-2 {
+  --tw-ring-shadow: var(--tw-ring-inset, ) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+
+.shadow-foreground\/40 {
+  --tw-shadow-color: var(--foreground);
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .shadow-foreground\/40 {
+    --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--foreground) 40%, transparent) var(--tw-shadow-alpha), transparent);
+  }
+}
+
 .shadow-primary {
   --tw-shadow-color: var(--primary);
 }
@@ -1207,6 +1267,15 @@ button, input:where([type="button"], [type="reset"], [type="submit"]) {
   .shadow-primary\/40 {
     --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--primary) 40%, transparent) var(--tw-shadow-alpha), transparent);
   }
+}
+
+.ring-offset-2 {
+  --tw-ring-offset-width: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset, ) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+}
+
+.ring-offset-background {
+  --tw-ring-offset-color: var(--background);
 }
 
 .outline {
@@ -1534,6 +1603,12 @@ button, input:where([type="button"], [type="reset"], [type="submit"]) {
 }
 
 @media (hover: hover) {
+  .hover\:\!bg-foreground:hover {
+    background-color: var(--foreground) !important;
+  }
+}
+
+@media (hover: hover) {
   .hover\:text-accent:hover {
     color: var(--accent);
   }
@@ -1592,6 +1667,19 @@ button, input:where([type="button"], [type="reset"], [type="submit"]) {
 
 .focus\:underline:focus {
   text-decoration-line: underline;
+}
+
+.focus-visible\:z-10:focus-visible {
+  z-index: 10;
+}
+
+.focus-visible\:outline-2:focus-visible {
+  outline-style: var(--tw-outline-style);
+  outline-width: 2px;
+}
+
+.focus-visible\:outline-offset-2:focus-visible {
+  outline-offset: 2px;
 }
 
 .active\:underline:active {
@@ -1828,6 +1916,24 @@ a:hover {
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: 8px;
+}
+
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
 }
 
 @property --tw-scale-x {
@@ -2189,24 +2295,6 @@ a:hover {
   syntax: "*";
   inherits: false;
   initial-value: "";
-}
-
-@property --tw-translate-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-
-@property --tw-translate-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-
-@property --tw-translate-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
 }
 
 /*# sourceMappingURL=app_globals_css_bad6b30c._.single.css.map*/
