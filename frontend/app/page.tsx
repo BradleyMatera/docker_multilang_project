@@ -3,6 +3,7 @@
 "use client";
 import { Button, Card, CardHeader, CardBody, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Divider } from "@nextui-org/react";
 import { LanguageDemoCard } from "../components/LanguageDemoCard";
+import { HeroSection } from "../components/HeroSection";
 
 const demos = [
   {
@@ -45,28 +46,7 @@ const demos = [
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-black text-white flex flex-col items-center justify-start px-4 py-8">
-      <Navbar maxWidth="xl" className="bg-black/70 backdrop-blur-lg shadow-lg mb-8 rounded-xl">
-        <NavbarBrand>
-          <span className="text-2xl font-extrabold tracking-tight text-white">🚀 Docker Multi-Language</span>
-        </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-4" justify="end">
-          <NavbarItem>
-            <Link href="https://github.com/BradleyMatera/docker_multilang_project" target="_blank" className="text-white hover:text-primary transition-colors">GitHub</Link>
-          </NavbarItem>
-        </NavbarContent>
-      </Navbar>
-      <section className="w-full max-w-4xl text-center mb-12">
-        <h1 className="text-6xl font-extrabold mb-4 tracking-tight drop-shadow-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
-          Multi-Language Showcase
-        </h1>
-        <p className="text-2xl mb-6 text-gray-200 font-medium">
-          Explore how different programming languages print a hello-world message with the current date and time.<br />
-          Modern, responsive, and visually bold.
-        </p>
-        <Button color="primary" size="lg" className="shadow-xl transition-transform hover:scale-105" radius="full">
-          View on GitHub
-        </Button>
-      </section>
+      <HeroSection />
       <Divider className="my-8 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-1 rounded-full" />
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl">
         {demos.map((demo) => (
