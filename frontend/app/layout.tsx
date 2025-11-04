@@ -26,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background text-foreground" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <Providers>
-          {children}
+          <div className="flex-1 flex flex-col w-full max-w-screen-2xl mx-auto px-2 sm:px-6 md:px-12 lg:px-24 xl:px-32">
+            {children}
+          </div>
         </Providers>
       </body>
     </html>
