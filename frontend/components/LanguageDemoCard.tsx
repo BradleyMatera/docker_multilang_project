@@ -11,10 +11,10 @@ interface LanguageDemoCardProps {
 
 export function LanguageDemoCard({ language, description, code }: LanguageDemoCardProps) {
   return (
-    <Card className="bg-gradient-to-tr from-gray-900 via-blue-800 to-purple-900 shadow-xl hover:scale-105 transition-transform duration-300">
+    <Card className="bg-gradient-to-tr from-background-light via-primary to-accent shadow-xl-gradient hover:scale-105 hover:shadow-card transition-transform duration-300 rounded-2xl" tabIndex={0} aria-label={`Demo card for ${language}`}>
       <CardHeader className="flex flex-col items-start">
-        <span className="text-lg font-bold">{language}</span>
-        <span className="text-sm text-gray-400">{description}</span>
+        <span className="text-lg font-bold text-primary drop-shadow-xl-gradient transition-colors duration-300">{language}</span>
+        <span className="text-sm text-foreground">{description}</span>
       </CardHeader>
       <CardBody>
         <pre className="text-xs bg-black/50 rounded p-3 overflow-x-auto text-green-300">{code}</pre>
