@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/docker_multilang_project//_next/:path+",
+        "destination": "/docker_multilang_project/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
