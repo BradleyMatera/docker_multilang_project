@@ -3,7 +3,7 @@
 3:I[31713,["/docker_multilang_project/_next/static/chunks/72bd07a0a637936b.js","/docker_multilang_project/_next/static/chunks/769d96e7b3842a46.js","/docker_multilang_project/_next/static/chunks/3ee6dabd6a938391.js"],"default"]
 6:I[97367,["/docker_multilang_project/_next/static/chunks/42879de7b8087bc9.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
-0:{"buildId":"Tzqf3D6BwiaMNj1vIYJ7F","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/docker_multilang_project/_next/static/chunks/769d96e7b3842a46.js","async":true}],["$","script","script-1",{"src":"/docker_multilang_project/_next/static/chunks/3ee6dabd6a938391.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"Uo0-x39Phw1sOaF30_E2p","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/docker_multilang_project/_next/static/chunks/769d96e7b3842a46.js","async":true}],["$","script","script-1",{"src":"/docker_multilang_project/_next/static/chunks/3ee6dabd6a938391.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
 4:{}
 5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
 8:null
