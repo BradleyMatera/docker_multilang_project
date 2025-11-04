@@ -1,12 +1,14 @@
-# TODO: Future Enhancements
+# TODO: Major Overhaul for Premium NextUI/Tailwind Site
 
-- [ ] Add animated transitions and micro-interactions for cards and hero sections
-- [ ] Integrate custom illustrations or SVGs for visual polish
-- [ ] Improve accessibility (ARIA roles, keyboard navigation, color contrast)
-- [ ] Add carousel, tabs, or accordion components for interactive content
-- [ ] Optimize performance (image loading, code splitting, bundle size)
-- [ ] Add theme switcher (dark/light toggle)
-- [ ] Enhance mobile experience and touch interactions
-- [ ] Add more language demos or code samples
+- [ ] Design and implement a responsive, animated hero section
+- [ ] Build a modern navigation bar with theme switcher
+- [ ] Create reusable card, section, and form components
+- [ ] Add interactive elements: carousel, tabs, accordion
+- [ ] Ensure accessibility: ARIA, keyboard navigation, color contrast
+- [ ] Refactor layout for consistent spacing, typography, color usage
+- [ ] Add layered gradients, purposeful motion, and depth
+- [ ] Enhance CTA placement and content hierarchy
+- [ ] Integrate custom illustrations or SVGs
+- [ ] Optimize for mobile and desktop
 - [ ] Write unit/integration tests for components
 - [ ] Expand documentation with design decisions and architecture
