@@ -41,6 +41,16 @@ bun run lint        # Run linter
 - `tailwind.config.js` - Tailwind/NextUI config
 - `next.config.ts` - Next.js config for Bun/static export
 
+## 📝 Architecture & Design Decisions
+
+- **Component Architecture:** All UI elements are built as reusable NextUI + Tailwind components (NavBar, HeroSection, LanguageDemoCard, Accordion).
+- **Theme Support:** Dark/light mode is managed via next-themes and NextUI, with a theme switcher in the navigation bar.
+- **Accessibility:** Interactive elements use ARIA roles and keyboard navigation; color contrast is tuned for readability.
+- **Visuals:** Layered gradients, purposeful motion, and custom SVGs create depth and polish.
+- **Content Hierarchy:** Tutorial landing page uses Accordion for step-by-step explanations, code walkthroughs, and deployment details.
+- **Testing:** Unit/integration tests are written with Jest and React Testing Library.
+- **Deployment:** Static export to docs/ and automated deployment to GitHub Pages via Actions.
+
 ## 📝 TODO
 
 See [TODO.md](./TODO.md) for future enhancements.
