@@ -4,6 +4,7 @@
 import { Divider, Card, CardHeader, CardBody, Accordion, AccordionItem, Button, Link } from "@nextui-org/react";
 import { HeroSection } from "../components/HeroSection";
 import { LanguageDemoCard } from "../components/LanguageDemoCard";
+import { NavBar } from "../components/NavBar";
 
 const steps = [
   {
@@ -159,6 +160,7 @@ const steps = [
 export default function TutorialLandingPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-black text-white flex flex-col items-center justify-start px-4 py-8">
+      <NavBar />
       <HeroSection />
       <Divider className="my-8 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-1 rounded-full" />
       <Accordion variant="splitted" className="w-full max-w-4xl mb-12" defaultExpandedKeys={["0"]}>
