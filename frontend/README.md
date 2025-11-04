@@ -43,10 +43,11 @@ bun run lint        # Run linter
 
 ## 📝 Architecture & Design Decisions
 
-- **Component Architecture:** All UI elements are built as reusable NextUI + Tailwind components (NavBar, HeroSection, LanguageDemoCard, Accordion).
-- **Theme Support:** Dark/light mode is managed via next-themes and NextUI, with a theme switcher in the navigation bar.
-- **Accessibility:** Interactive elements use ARIA roles and keyboard navigation; color contrast is tuned for readability.
-- **Visuals:** Layered gradients, purposeful motion, and custom SVGs create depth and polish.
+- **Component Architecture:** All UI elements are built as reusable NextUI + Tailwind components (NavBar, HeroSection, LanguageDemoCard, Accordion). Consistent spacing, typography, color usage, and theme support are enforced via custom utility classes in globals.css.
+- **Theme Support:** Dark/light mode is managed via next-themes and NextUI, with a theme switcher in the navigation bar. Tailwind theme is deeply customized for brand colors, gradients, and visual depth.
+- **Accessibility:** Interactive elements use ARIA roles, keyboard navigation, and high color contrast for readability. All major components include accessibility attributes.
+- **Visuals:** Layered gradients, animated SVG backgrounds, purposeful motion, and advanced shadows create depth and polish. Transitions and micro-interactions are present throughout.
+- **Responsiveness:** Layouts are fully responsive for mobile, tablet, and desktop, using Tailwind breakpoints and flex/grid utilities.
 - **Content Hierarchy:** Tutorial landing page uses Accordion for step-by-step explanations, code walkthroughs, and deployment details.
 - **Testing:** Unit/integration tests are written with Jest and React Testing Library.
 - **Deployment:** Static export to docs/ and automated deployment to GitHub Pages via Actions.
