@@ -7,12 +7,16 @@ import { useTheme } from "next-themes";
 import { useCallback } from "react";
 
 export function ThemeSwitch() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  const isDark = (resolvedTheme ?? theme) === "dark";
+  const { setTheme, resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   const handleChange = useCallback(() => {
     setTheme(isDark ? "light" : "dark");
   }, [isDark, setTheme]);
+
+  if (!resolvedTheme) {
+    return <span aria-hidden="true" className="inline-flex h-10 w-[4.5rem] rounded-full bg-black/10" />;
+  }
 
   return (
     <Switch
