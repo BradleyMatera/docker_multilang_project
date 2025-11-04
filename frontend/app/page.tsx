@@ -267,32 +267,42 @@ export default function TutorialLandingPage() {
       <NavBar />
       <HeroSection />
       {/* Tutorial Introduction */}
-      <section className="w-full max-w-3xl mx-auto mb-12 p-6 rounded-2xl bg-background-light/80 shadow-card">
-        <h2 className="text-3xl font-extrabold text-primary mb-4">Introduction</h2>
-        <p className="text-lg text-foreground mb-2">
-          Welcome to the Docker Multi-Language Project tutorial! This guide will walk you through building a premium, responsive static site using Next.js 16, Bun, Tailwind CSS, and NextUI.
+      <section className="w-full max-w-3xl mx-auto mb-12 p-8 rounded-2xl bg-background-light/90 shadow-xl-gradient border border-primary/20">
+        <h2 className="text-4xl font-extrabold text-primary mb-6 font-display">Introduction</h2>
+        <p className="text-2xl text-foreground mb-4 font-display">
+          Welcome to the Docker Multi-Language Project tutorial! This guide walks you through building a premium, responsive static site using Next.js 16, Bun, Tailwind CSS, and NextUI.
         </p>
-        <ul className="list-disc ml-6 text-foreground">
+        <ul className="list-disc ml-8 text-lg text-foreground space-y-2">
           <li><b>Project Goals:</b> Visual upgrade, modern layouts, reusable components, accessibility, and automated deployment.</li>
           <li><b>Tech Stack:</b> Bun (runtime), Next.js 16 (App Router, TypeScript), Tailwind CSS, NextUI, GitHub Actions/Pages.</li>
           <li><b>Overview:</b> Migrate static HTML/CSS/JS to a Next.js app, enhance with bold UI, and deploy to GitHub Pages.</li>
         </ul>
       </section>
-      <Divider className="my-8 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-1 rounded-full" />
-      <Accordion variant="splitted" className="w-full max-w-4xl mb-12" defaultExpandedKeys={["0"]}>
-        {steps.map((step, idx) => (
-          <AccordionItem
-            key={idx}
-            title={<span className="text-xl font-bold">{step.title}</span>}
-            textValue={step.title}
-            className="bg-black/70 text-white rounded-xl shadow-lg mb-4"
-          >
-            <div className="text-lg">{step.content}</div>
-          </AccordionItem>
-        ))}
-      </Accordion>
-      <footer className="mt-16 text-center text-gray-400 text-sm">
-        <Divider className="my-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-1 rounded-full" />
+      <Divider className="my-12 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-1 rounded-full" />
+      <section className="w-full max-w-4xl mx-auto mb-16">
+        <Accordion
+          variant="splitted"
+          className="w-full"
+          defaultExpandedKeys={["0"]}
+          itemClasses={{
+            base: "mb-8 rounded-2xl shadow-xl-gradient border border-primary/10 bg-background-light/80",
+            title: "text-2xl font-bold text-primary font-display",
+            content: "text-lg text-foreground px-6 py-4 space-y-4",
+          }}
+        >
+          {steps.map((step, idx) => (
+            <AccordionItem
+              key={idx}
+              title={<span>{step.title}</span>}
+              textValue={step.title}
+            >
+              <div>{step.content}</div>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
+      <footer className="mt-24 text-center text-gray-400 text-lg font-mono">
+        <Divider className="my-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-1 rounded-full" />
         <span>
           &copy; {new Date().getFullYear()} Docker Multi-Language Project &mdash; Built with Next.js, Bun, Tailwind, NextUI
         </span>
