@@ -23,6 +23,14 @@ export default {
           dark: "#BE185D",
           light: "#F9A8D4",
         },
+        accent2: {
+          DEFAULT: "#8B5CF6",
+          light: "#C4B5FD",
+        },
+        accent3: {
+          DEFAULT: "#F59E42",
+          light: "#FDE68A",
+        },
         background: {
           DEFAULT: "#0A0A0A",
           light: "#F3F4F6",
@@ -31,6 +39,10 @@ export default {
           DEFAULT: "#EDEDED",
           dark: "#171717",
         },
+        gradientStart: "#6366F1",
+        gradientMid: "#8B5CF6",
+        gradientEnd: "#EC4899",
+        gradientGold: "#F59E42",
       },
       fontFamily: {
         sans: ["Geist", "Inter", "Arial", "sans-serif"],
