@@ -1,33 +1,11 @@
-# TODO: Major Overhaul for Premium NextUI/Tailwind Site
+# TODO: Future Enhancements & Polish
 
-- [ ] Design and implement a responsive, animated hero section
-- [ ] Build a modern navigation bar with theme switcher
-- [ ] Create reusable card, section, and form components
-- [ ] Add interactive elements: carousel, tabs, accordion
-- [ ] Ensure accessibility: ARIA, keyboard navigation, color contrast
-- [ ] Refactor layout for consistent spacing, typography, color usage
-- [ ] Add layered gradients, purposeful motion, and depth
-- [ ] Enhance CTA placement and content hierarchy
-- [ ] Integrate custom illustrations or SVGs
-- [ ] Optimize for mobile and desktop
-- [ ] Write unit/integration tests for components
-- [ ] Expand documentation with design decisions and architecture
-
----
-
-## In-Depth Tutorial Outline
-
-- [ ] Introduction: Project goals, tech stack, and overview
-- [ ] Walkthrough: Setting up Bun, Next.js 16, Tailwind, NextUI
-- [ ] Guide: Migrating static HTML/CSS/JS to Next.js App Router
-- [ ] Example: Creating a premium HeroSection with gradients, SVG, and motion
-- [ ] How-To: Building reusable NextUI/Tailwind components (NavBar, Card, Accordion)
-- [ ] Walkthrough: Implementing dark/light theme support
-- [ ] Guide: Ensuring accessibility (ARIA, keyboard navigation, color contrast)
-- [ ] Example: Adding interactive elements (carousel, tabs, accordions)
-- [ ] How-To: Responsive layouts for mobile, tablet, desktop
-- [ ] Walkthrough: Automating deployment with GitHub Actions and Pages
-- [ ] Guide: Writing unit/integration tests for components
-- [ ] Example: Expanding with custom illustrations, advanced visuals
-- [ ] How-To: Performance optimization and best practices
-- [ ] Final Thoughts: Architecture decisions, future enhancements
+- [ ] Animate carousel transitions with spring physics or auto-play (pause on hover for accessibility).
+- [ ] Bring in custom SVG illustrations (container topology, workflow map) and animate with Framer Motion.
+- [ ] Add integration tests for tabs/accordion using Jest DOM + user-event to validate focus order.
+- [ ] Introduce performance budget checks (Lighthouse script, bundle analyzer) to keep static export lean.
+- [ ] Wire optional GitHub Actions workflow for automated `bun run build:pages` + Pages deploy.
+- [ ] Surface Docker service status by pinging container endpoints (API route or Server Actions).
+- [ ] Document advanced customization paths: adding new languages, hooking REST/GraphQL APIs.
+- [ ] Explore reduced-motion media queries for animation-sensitive visitors.
+- [ ] Layer micro-interactions (button ripples, gradient shifts) using CSS variables for theme parity.

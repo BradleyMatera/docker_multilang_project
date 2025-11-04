@@ -2,13 +2,23 @@
 @tailwind utilities;
 
 :root {
-  --background: #0A0A0A;
-  --background-light: #F3F4F6;
-  --foreground: #EDEDED;
-  --primary: #6366F1;
-  --accent: #EC4899;
+  --background: #050712;
+  --background-light: #10122a;
+  --foreground: #f4f5fb;
+  --muted: #b6b8d2;
+  --primary: #6366f1;
+  --accent: #ec4899;
   --font-sans: 'Geist', 'Inter', 'Montserrat', Arial, sans-serif;
   --font-mono: 'Geist Mono', Menlo, monospace;
+}
+
+html.light {
+  --background: #f8f9ff;
+  --background-light: #ffffff;
+  --foreground: #141625;
+  --muted: #4f5774;
+  --primary: #4338ca;
+  --accent: #db2777;
 }
 
 @theme inline {
@@ -21,104 +31,108 @@
   --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0A0A0A;
-    --foreground: #EDEDED;
-  }
-}
-
 body {
-  background: var(--background);
+  background: radial-gradient(circle at top left, rgba(99,102,241,0.2), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(236,72,153,0.18), transparent 55%),
+    var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.7;
   letter-spacing: 0.01em;
   min-height: 100vh;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.4s ease, color 0.2s ease;
   padding: 0;
   margin: 0;
+}
+
+html.light body {
+  background: radial-gradient(circle at top left, rgba(99,102,241,0.16), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(219,39,119,0.15), transparent 50%),
+    var(--background);
 }
 
 .font-display {
   font-family: var(--font-display, var(--font-sans));
   font-weight: 800;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
 }
 
 .font-mono {
   font-family: var(--font-mono);
 }
 
-.text-primary {
-  color: var(--primary);
-}
-
-.text-accent {
-  color: var(--accent);
-}
-
-.text-foreground {
-  color: var(--foreground);
-}
-
-.bg-background {
-  background: var(--background);
-}
-
-.bg-background-light {
-  background: var(--background-light);
-}
-
 .shadow-xl-gradient {
-  box-shadow: 0 8px 32px 0 rgba(99,102,241,0.3), 0 1.5px 8px 0 rgba(236,72,153,0.15);
+  box-shadow:
+    0 20px 60px -15px rgba(99, 102, 241, 0.35),
+    0 18px 40px -20px rgba(236, 72, 153, 0.25);
 }
 
 .shadow-card {
-  box-shadow: 0 4px 24px 0 rgba(99,102,241,0.15), 0 1.5px 8px 0 rgba(236,72,153,0.10);
-}
-
-.rounded-xl {
-  border-radius: 1.25rem;
-}
-
-.rounded-2xl {
-  border-radius: 2rem;
+  box-shadow:
+    0 14px 40px -18px rgba(99, 102, 241, 0.35),
+    0 12px 32px -20px rgba(12, 17, 34, 0.35);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display, var(--font-sans));
   font-weight: 800;
-  letter-spacing: -0.01em;
-  color: var(--primary);
+  letter-spacing: -0.025em;
   margin-bottom: 0.5em;
 }
 
 a {
-  color: var(--accent);
+  color: inherit;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 a:hover {
   color: var(--primary);
   text-decoration: underline;
+  text-decoration-color: rgba(99, 102, 241, 0.6);
 }
 
-.card {
-  background: linear-gradient(135deg, var(--background-light) 60%, var(--primary) 100%);
-  box-shadow: 0 4px 24px 0 rgba(99,102,241,0.15), 0 1.5px 8px 0 rgba(236,72,153,0.10);
-  border-radius: 1.25rem;
-  padding: 2rem;
-  margin-bottom: 2rem;
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.grid-divider {
+  position: relative;
+}
+
+.grid-divider::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(99,102,241,0.15), rgba(236,72,153,0.15));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.grid-divider:hover::before {
+  opacity: 1;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
-  background: var(--background);
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(99,102,241,0.8), rgba(236,72,153,0.6));
+  border-radius: 9999px;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: #fff;
 }

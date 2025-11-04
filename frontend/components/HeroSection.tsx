@@ -1,58 +1,100 @@
-// Responsive, animated hero section for premium UI
+// Animated hero section with layered gradients and highlight stats.
 
 "use client";
-import { Button } from "@nextui-org/react";
+import { Button, Card, CardBody, Chip } from "@nextui-org/react";
+import { heroHighlights } from "../data/content";
 
 export function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[70vh] py-20 px-4 text-center overflow-hidden font-display" aria-label="Hero Section">
-      {/* Animated SVG background */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1440 560" fill="none">
+    <section
+      className="relative overflow-hidden rounded-3xl border border-primary/15 bg-gradient-to-br from-background via-background/80 to-background-light/30 px-6 py-20 sm:px-10 lg:px-20"
+      aria-labelledby="hero-heading"
+    >
+      <GradientBackdrop />
+      <div className="relative z-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div className="space-y-8 text-left">
+          <div className="inline-flex items-center gap-3 rounded-full bg-black/40 px-4 py-2 text-sm font-semibold text-foreground/80 backdrop-blur">
+            <span className="text-primary">Next.js 16</span>
+            <span className="text-foreground/60">+</span>
+            <span className="text-accent">Bun runtime</span>
+          </div>
+          <h1
+            id="hero-heading"
+            className="font-display text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl"
+          >
+            A premium multi-language Docker showcase rebuilt with purpose.
+          </h1>
+          <p className="max-w-2xl text-lg text-foreground/80 sm:text-xl">
+            Explore seven containerized runtimes, orchestrated with Docker Compose and presented with a richly animated
+            NextUI + Tailwind experience. Responsive layouts, elevated typography, and thoughtful motion make the
+            tutorial unforgettable.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Button
+              as="a"
+              href="https://github.com/BradleyMatera/docker_multilang_project"
+              target="_blank"
+              size="lg"
+              radius="full"
+              color="primary"
+              className="shadow-xl-gradient transition-transform hover:scale-[1.03]"
+            >
+              <span className="mr-2" aria-hidden="true">🚀</span> View Source
+            </Button>
+            <Button
+              as="a"
+              href="#workflow"
+              variant="bordered"
+              size="lg"
+              radius="full"
+              className="border-primary/60 text-foreground hover:border-primary hover:bg-primary/10"
+            >
+              See the workflow
+            </Button>
+          </div>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          {heroHighlights.map((highlight) => (
+            <Card
+              key={highlight.label}
+              className="bg-black/70 backdrop-blur-xl border border-white/5 shadow-xl-gradient text-left"
+              radius="lg"
+            >
+              <CardBody className="space-y-3">
+                <Chip color="secondary" variant="flat" className="w-fit font-semibold uppercase tracking-wide">
+                  {highlight.label}
+                </Chip>
+                <p className="font-display text-2xl text-foreground">{highlight.value}</p>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GradientBackdrop() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none">
+      <div className="absolute -left-1/4 top-10 h-96 w-96 rounded-full bg-primary/40 blur-[160px]" />
+      <div className="absolute right-0 top-1/3 h-72 w-72 rounded-full bg-accent/30 blur-[120px]" />
+      <div className="absolute inset-0 rounded-3xl border border-white/5" />
+      <svg className="absolute inset-0 h-full w-full opacity-70" viewBox="0 0 800 600" fill="none">
         <defs>
-          <linearGradient id="hero-gradient" x1="0" y1="0" x2="1440" y2="560" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#6366F1" />
-            <stop offset="0.5" stopColor="#8B5CF6" />
-            <stop offset="1" stopColor="#EC4899" />
+          <linearGradient id="hero-pulse" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="rgba(99,102,241,0.35)" />
+            <stop offset="50%" stopColor="rgba(139,92,246,0.15)" />
+            <stop offset="100%" stopColor="rgba(236,72,153,0.25)" />
           </linearGradient>
         </defs>
-        <ellipse cx="720" cy="280" rx="700" ry="220" fill="url(#hero-gradient)" opacity="0.25">
-          <animate attributeName="rx" values="700;750;700" dur="6s" repeatCount="indefinite" />
-        </ellipse>
-        <ellipse cx="720" cy="320" rx="600" ry="180" fill="url(#hero-gradient)" opacity="0.18">
-          <animate attributeName="rx" values="600;650;600" dur="7s" repeatCount="indefinite" />
-        </ellipse>
+        <circle cx="120" cy="120" r="110" fill="url(#hero-pulse)">
+          <animate attributeName="r" values="100;120;100" dur="9s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="650" cy="180" r="160" fill="url(#hero-pulse)" opacity="0.6">
+          <animate attributeName="cx" values="640;660;640" dur="12s" repeatCount="indefinite" />
+        </circle>
       </svg>
-      {/* Layered gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-background opacity-80 blur-2xl animate-gradient"></div>
-      <h1 className="relative text-7xl md:text-8xl font-extrabold tracking-tight text-transparent mb-8 bg-gradient-to-r from-primary via-accent to-foreground bg-clip-text animate-gradient drop-shadow-xl-gradient transition-all duration-700" tabIndex={0}>
-        Docker Multi-Language Project
-      </h1>
-      <p className="relative text-2xl md:text-3xl text-foreground mb-10 font-medium z-10 drop-shadow-card transition-colors duration-500">
-        Bold, modern, animated showcase of language demos.<br />
-        Built with Next.js, Bun, Tailwind, NextUI.
-      </p>
-      <Button
-        color="primary"
-        size="lg"
-        radius="full"
-        className="relative shadow-xl-gradient transition-transform hover:scale-110 hover:shadow-card z-10 font-display duration-300"
-        href="https://github.com/BradleyMatera/docker_multilang_project"
-        target="_blank"
-        aria-label="View project on GitHub"
-      >
-        <span className="mr-2" aria-hidden="true">🚀</span> View on GitHub
-      </Button>
-      <style jsx>{`
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradientMove 4s ease-in-out infinite;
-        }
-        @keyframes gradientMove {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
-    </section>
+    </div>
   );
 }

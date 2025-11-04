@@ -1,59 +1,73 @@
-# 🚀 Docker Multi-Language Frontend (Next.js + Bun + NextUI)
+# 🚀 Docker Multi-Language Frontend (Next.js 16 + Bun + NextUI)
 
-A visually upgraded, responsive showcase of multi-language hello-world demos. Built with Next.js 16 (App Router, TypeScript, Tailwind), Bun, and NextUI (HeroUI) for elegant, animated UI with dark/light theming.
+Premium rebuild of the Docker multi-language hello world showcase. The site layers bold gradients, reusable NextUI/Tailwind components, and interactive storytelling to highlight each containerized runtime.
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-- Bun (package manager/runtime)
-- Next.js 16 (App Router, TypeScript)
-- Tailwind CSS
-- NextUI (HeroUI) for design system
-- GitHub Actions + GitHub Pages (static export)
+- Bun runtime & package manager
+- Next.js 16 (App Router, TypeScript, static export)
+- Tailwind CSS 4 + custom design tokens
+- NextUI (HeroUI) components with next-themes
+- GitHub Pages ready via `docs/` export
 
 ## 📦 Scripts
 
 ```bash
-bun run dev         # Start development server
-bun run build       # Build for production
-bun run build:pages # Build and export static site to docs/
-bun run lint        # Run linter
+bun install          # Install dependencies
+bun run dev          # Start the Next.js dev server
+bun run lint         # ESLint (Next.js core web vitals)
+bun run build        # Production build (writes to docs/ thanks to next.config.ts)
+bun run build:pages  # Alias for build when deploying to GitHub Pages
 ```
+
+## ✨ UI Highlights
+
+- **Hero + Stats:** Layered gradients, animated SVG pulses, highlight chips, and dual CTAs.
+- **Feature Grid:** Four-card treatment explaining the visual upgrade, architecture, accessibility, and interactivity.
+- **Language Showcase:** Responsive grid plus an interactive carousel that cycles through all seven hello-world demos.
+- **Workflow Tabs:** NextUI `Tabs` component that walks through plan → build → ship with narrative checklists.
+- **Deployment Timeline:** Split timeline explaining containers → rebuild → static export → CI/CD.
+- **Resources Accordion:** Quick access to project tour, setup commands, and future extensions.
+- **Dark/Light Theme:** `ThemeSwitch` component wraps `next-themes` + NextUI for polished toggling.
+
+## 🧱 Project Structure
+
+```
+frontend/
+├── app/                    # Next.js App Router entrypoints
+├── components/
+│   ├── sections/           # High-level layout sections (tabs, timeline, etc.)
+│   ├── HeroSection.tsx     # Animated hero with stats
+│   ├── LanguageCarousel.tsx
+│   ├── LanguageDemoCard.tsx
+│   ├── NavBar.tsx
+│   └── ThemeSwitch.tsx
+├── lib/content.ts          # Centralized content & copy decks
+├── docs/                   # Static export for GitHub Pages
+├── tailwind.config.js
+├── next.config.ts
+└── package.json
+```
+
+## 🧪 Testing
+
+Unit coverage with Jest + React Testing Library targets:
+
+- Hero headline + CTA rendering
+- Navigation links + theme switch
+- Home page section layout smoke test
+- Language cards verifying copy snippets
+
+Run tests with `bun run test` (add the script via Jest if needed).
 
 ## 🚀 Deployment
 
-1. Run `bun run build:pages` to export static site to `docs/`.
-2. Ensure `docs/.nojekyll` exists for GitHub Pages.
-3. Push to GitHub. Configure Pages to serve from `/docs`.
-4. GitHub Actions workflow automates build/deploy (see .github/workflows).
+1. `bun run build:pages` → builds and exports to `docs/`.
+2. Ensure `docs/.nojekyll` exists (generated on first export).
+3. Push to GitHub and point GitHub Pages to the `/docs` folder.
 
-## ✨ Features
+Because `next.config.ts` sets `output: "export"` and `distDir: "docs"`, the build is Pages-ready out of the box. GitHub Actions can run the same build command for continuous deployment.
 
-- Bold, modern layouts: hero, cards, gradients, motion
-- Responsive, accessible, themeable UI
-- Reusable NextUI/Tailwind components
-- All original content migrated and enhanced
+## 📝 Further Enhancements
 
-## 📋 Project Structure
-
-- `app/` - Next.js App Router pages/components
-- `components/` - Reusable UI components
-- `docs/` - Static export for GitHub Pages
-- `tailwind.config.js` - Tailwind/NextUI config
-- `next.config.ts` - Next.js config for Bun/static export
-
-## 📝 Architecture & Design Decisions
-
-- **Component Architecture:** All UI elements are built as reusable NextUI + Tailwind components (NavBar, HeroSection, LanguageDemoCard, Accordion). Consistent spacing, typography, color usage, and theme support are enforced via custom utility classes in globals.css.
-- **Theme Support:** Dark/light mode is managed via next-themes and NextUI, with a theme switcher in the navigation bar. Tailwind theme is deeply customized for brand colors, gradients, and visual depth.
-- **Accessibility:** Interactive elements use ARIA roles, keyboard navigation, and high color contrast for readability. All major components include accessibility attributes.
-- **Visuals:** Layered gradients, animated SVG backgrounds, purposeful motion, and advanced shadows create depth and polish. Transitions and micro-interactions are present throughout.
-- **Responsiveness:** Layouts are fully responsive for mobile, tablet, and desktop, using Tailwind breakpoints and flex/grid utilities.
-- **Content Hierarchy:** Tutorial landing page uses Accordion for step-by-step explanations, code walkthroughs, and deployment details.
-- **Testing:** Unit/integration tests are written with Jest and React Testing Library.
-- **Deployment:** Static export to docs/ and automated deployment to GitHub Pages via Actions.
-
-## 📝 TODO
-
-See [TODO.md](./TODO.md) for future enhancements.
-
-_Last updated: deployment trigger test_
+See [TODO.md](./TODO.md) for animation ideas, illustration concepts, and performance investigations queued for later iterations.

@@ -1,23 +1,36 @@
 // Reusable card for language demo, using NextUI and Tailwind
+// Reusable card for language demo, pairing NextUI polish with Tailwind motion.
 
 "use client";
-import { Card, CardHeader, CardBody } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Chip, Divider } from "@nextui-org/react";
+import { type LanguageDemo } from "../data/content";
 
-interface LanguageDemoCardProps {
-  language: string;
-  description: string;
-  code: string;
-}
+type LanguageDemoCardProps = LanguageDemo;
 
-export function LanguageDemoCard({ language, description, code }: LanguageDemoCardProps) {
+export function LanguageDemoCard({ language, description, code, paradigm }: LanguageDemoCardProps) {
   return (
-    <Card className="bg-gradient-to-tr from-background-light via-primary to-accent shadow-xl-gradient hover:scale-105 hover:shadow-card transition-transform duration-300 rounded-2xl" tabIndex={0} aria-label={`Demo card for ${language}`}>
-      <CardHeader className="flex flex-col items-start">
-        <span className="text-lg font-bold text-primary drop-shadow-xl-gradient transition-colors duration-300">{language}</span>
-        <span className="text-sm text-foreground">{description}</span>
+    <Card
+      className="group h-full transform-gpu bg-gradient-to-br from-background-light/90 via-background/80 to-background/30 backdrop-blur-xl transition duration-300 hover:-translate-y-1.5 hover:shadow-xl-gradient"
+      radius="lg"
+      tabIndex={0}
+      aria-label={`Demo card for ${language}`}
+    >
+      <CardHeader className="flex flex-col items-start gap-3">
+        <div className="flex w-full items-center justify-between gap-3">
+          <span className="font-display text-xl font-semibold text-primary transition group-hover:text-accent">
+            {language}
+          </span>
+          <Chip variant="flat" color="primary" className="font-medium uppercase">
+            {paradigm}
+          </Chip>
+        </div>
+        <p className="text-sm text-foreground/80">{description}</p>
       </CardHeader>
+      <Divider className="mx-4 my-1 bg-gradient-to-r from-primary/40 via-accent/40 to-primary/40" />
       <CardBody>
-        <pre className="text-xs bg-black/50 rounded p-3 overflow-x-auto text-green-300">{code}</pre>
+        <code className="block max-h-56 overflow-auto rounded-xl bg-black/70 p-4 font-mono text-xs leading-relaxed text-foreground/90 shadow-inner">
+          {code}
+        </code>
       </CardBody>
     </Card>
   );

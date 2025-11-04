@@ -7,6 +7,7 @@
     "build": "bun run next build",
     "start": "bun run next start",
     "lint": "bun run eslint .",
+    "test": "bun run jest",
     "build:pages": "bun run next build"
   },
   "dependencies": {
@@ -27,10 +28,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
     "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "jest": {
-    "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"]
   }
 }

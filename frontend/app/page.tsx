@@ -1,323 +1,38 @@
-// In-depth Tutorial Landing Page – Docker Multi-Language Project
-
 "use client";
-import { Divider, Card, CardHeader, CardBody, Accordion, AccordionItem, Button, Link } from "@nextui-org/react";
-import { HeroSection } from "../components/HeroSection";
-import { LanguageDemoCard } from "../components/LanguageDemoCard";
-import { NavBar } from "../components/NavBar";
 
-const steps = [
-  {
-    title: "Project Overview",
-    content: (
-      <>
-        <p>
-          This project is a comprehensive showcase of how to orchestrate multiple programming languages in a single Docker Compose environment, then rebuild the experience as a modern static site using Next.js 16, Bun, Tailwind CSS, and NextUI.
-        </p>
-        <ul className="list-disc ml-6 mt-2 text-left">
-          <li>Multi-language Docker Compose setup (C, Go, Java, Node.js, PHP, Python, Ruby)</li>
-          <li>Static site rebuild with Next.js 16 (App Router, TypeScript, Bun)</li>
-          <li>Premium UI/UX with NextUI, Tailwind, dark/light theming, and accessibility</li>
-          <li>Automated deployment to GitHub Pages via GitHub Actions</li>
-        </ul>
-      </>
-    ),
-  },
-  {
-    title: "Example: Creating a premium HeroSection with gradients, SVG, and motion",
-    content: (
-      <>
-        {/* ...existing content... */}
-      </>
-    ),
-  },
-  {
-    title: "How-To: Building reusable NextUI/Tailwind components (NavBar, Card, Accordion)",
-    content: (
-      <>
-        <p>
-          NextUI and Tailwind make it easy to build reusable, themeable components. Here are examples for NavBar, Card, and Accordion:
-        </p>
-        <h4 className="text-xl font-bold text-primary mt-4 mb-2">NavBar</h4>
-        <pre className="bg-black/80 text-accent p-4 rounded-xl font-mono text-xs overflow-x-auto">{`export function NavBar() {
-  return (
-    <Navbar maxWidth="xl" className="bg-black/70 backdrop-blur-lg shadow-lg mb-8 rounded-xl">
-      <NavbarBrand>
-        <span className="text-2xl font-extrabold tracking-tight text-white">🚀 Docker Multi-Language</span>
-      </NavbarBrand>
-      {/* ... */}
-    </Navbar>
-  );
-}`}</pre>
-        <h4 className="text-xl font-bold text-primary mt-4 mb-2">Card</h4>
-        <pre className="bg-black/80 text-accent p-4 rounded-xl font-mono text-xs overflow-x-auto">{`export function LanguageDemoCard({ language, description, code }) {
-  return (
-    <Card className="bg-gradient-to-tr from-background-light via-primary to-accent shadow-xl-gradient hover:scale-105 transition-transform duration-300 rounded-2xl">
-      <CardHeader>
-        <span className="text-lg font-bold text-primary">{language}</span>
-        <span className="text-sm text-foreground">{description}</span>
-      </CardHeader>
-      <CardBody>
-        <pre className="text-xs bg-black/50 rounded p-3 overflow-x-auto text-green-300">{code}</pre>
-      </CardBody>
-    </Card>
-  );
-}`}</pre>
-        <h4 className="text-xl font-bold text-primary mt-4 mb-2">Accordion</h4>
-        <pre className="bg-black/80 text-accent p-4 rounded-xl font-mono text-xs overflow-x-auto">{`<Accordion variant="splitted" className="w-full max-w-4xl mb-12">
-  <AccordionItem title="Step 1" textValue="Step 1">
-    <div>Step 1 content...</div>
-  </AccordionItem>
-  {/* ... */}
-</Accordion>`}</pre>
-        <p>
-          <b>Tip:</b> Use props and composition to make components flexible and reusable.
-        </p>
-      </>
-    ),
-  },
-  {
-    title: "Guide: Migrating static HTML/CSS/JS to Next.js App Router",
-    content: (
-      <>
-        {/* ...existing content... */}
-      </>
-    ),
-  },
-  {
-    title: "Example: Creating a premium HeroSection with gradients, SVG, and motion",
-    content: (
-      <>
-        <p>
-          The HeroSection is the visual centerpiece of the site. Here’s how to build a bold, animated hero with layered gradients and SVG motion:
-        </p>
-        <ol className="list-decimal ml-6 mt-2 text-left">
-          <li>
-            <b>Layered Gradients:</b> Use Tailwind’s <code>bg-gradient-to-br</code> and custom theme colors for depth.
-          </li>
-          <li>
-            <b>Animated SVG:</b> Add SVG ellipses with animated <code>rx</code> attributes for subtle motion.
-          </li>
-          <li>
-            <b>Typography:</b> Use <code>font-display</code> and <code>bg-clip-text</code> for rich, modern headings.
-          </li>
-          <li>
-            <b>Motion:</b> Add <code>animate-gradient</code> and <code>transition-all</code> for smooth transitions.
-          </li>
-        </ol>
-        <pre className="bg-black/80 text-accent p-4 rounded-xl font-mono text-xs overflow-x-auto">{`export function HeroSection() {
-  return (
-    <section className="relative flex flex-col items-center justify-center min-h-[70vh] py-20 px-4 text-center overflow-hidden font-display">
-      {/* Animated SVG background */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1440 560" fill="none">
-        <ellipse cx="720" cy="280" rx="700" ry="220" fill="url(#hero-gradient)" opacity="0.25">
-          <animate attributeName="rx" values="700;750;700" dur="6s" repeatCount="indefinite" />
-        </ellipse>
-      </svg>
-      <h1 className="relative text-7xl md:text-8xl font-extrabold tracking-tight text-transparent mb-8 bg-gradient-to-r from-primary via-accent to-foreground bg-clip-text animate-gradient drop-shadow-xl-gradient transition-all duration-700">
-        Docker Multi-Language Project
-      </h1>
-      {/* ... */}
-    </section>
-  );
-}`}</pre>
-        <p>
-          <b>Tip:</b> Use ARIA labels and <code>tabIndex</code> for accessibility.
-        </p>
-      </>
-    ),
-  },
-  {
-    title: "Architecture & Technologies",
-    content: (
-      <>
-        <p>
-          <b>Backend:</b> Docker Compose orchestrates containers for each language, running hello-world scripts.<br />
-          <b>Frontend:</b> Next.js 16 (App Router, TypeScript, Bun) powers the static site, styled with Tailwind and NextUI.<br />
-          <b>Design System:</b> NextUI provides accessible, themeable, animated components.<br />
-          <b>Deployment:</b> GitHub Actions builds and deploys the site to GitHub Pages.
-        </p>
-        <img src="/docker_multilang_project/globe.svg" alt="Architecture Diagram" className="mx-auto my-4 w-48 h-48" />
-      </>
-    ),
-  },
-  {
-    title: "Step-by-Step Implementation",
-    content: (
-      <ol className="list-decimal ml-6 mt-2 text-left">
-        <li>
-          <b>Analyze Requirements:</b> Gather all source files, Docker Compose config, and project goals.
-        </li>
-        <li>
-          <b>Scaffold Frontend:</b> Use <code>bun create next-app</code> to set up Next.js 16 with Tailwind, TypeScript, and App Router.
-        </li>
-        <li>
-          <b>Install NextUI:</b> <code>bun add @nextui-org/react</code> for the design system.
-        </li>
-        <li>
-          <b>Configure Tailwind:</b> Set up <code>tailwind.config.js</code> for NextUI integration and dark mode.
-        </li>
-        <li>
-          <b>Build Components:</b> Create reusable cards, hero, navigation, and interactive sections using NextUI and Tailwind.
-        </li>
-        <li>
-          <b>Migrate Content:</b> Port all code samples and explanations, enhancing with visuals, hierarchy, and CTAs.
-        </li>
-        <li>
-          <b>Automate Deployment:</b> Configure <code>next.config.ts</code> for static export, add .nojekyll, and set up GitHub Actions workflow.
-        </li>
-        <li>
-          <b>Document Everything:</b> Write a detailed README and TODO.md for future enhancements.
-        </li>
-      </ol>
-    ),
-  },
-  {
-    title: "Code Walkthrough",
-    content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[
-          {
-            language: "C",
-            description: "Compiled systems language. Prints date/time.",
-            code: `#include <stdio.h>\n#include <time.h>\nint main() {\n  time_t t;\n  time(&t);\n  printf("Hello ASL! The date is: %s", ctime(&t));\n  return 0;\n}`,
-          },
-          {
-            language: "Go",
-            description: "Modern compiled language. Prints date/time.",
-            code: `package main\nimport (\n  "fmt"\n  "time"\n)\nfunc main() {\n  fmt.Println("Hello ASL! The date is:", time.Now())\n}`,
-          },
-          {
-            language: "Java",
-            description: "Popular OOP language. Prints date/time.",
-            code: `import java.time.LocalDateTime;\nimport java.time.format.DateTimeFormatter;\npublic class Hello {\n  public static void main(String[] args) {\n    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");\n    LocalDateTime now = LocalDateTime.now();\n    System.out.println("Hello ASL! The date is: " + dtf.format(now));\n  }\n}`,
-          },
-          {
-            language: "Node.js",
-            description: "JavaScript runtime. Prints date/time.",
-            code: `console.log("Hello ASL! The date is: " + new Date().toLocaleString());`,
-          },
-          {
-            language: "PHP",
-            description: "Server-side scripting. Prints date/time.",
-            code: `<?php\necho "Hello ASL! The date is: " . date('Y-m-d H:i:s') . "\\n";\n?>`,
-          },
-          {
-            language: "Python",
-            description: "Popular scripting language. Prints date/time.",
-            code: `from datetime import datetime\nprint(f"Hello ASL! The date is: {datetime.now()}")`,
-          },
-          {
-            language: "Ruby",
-            description: "Elegant scripting language. Prints date/time.",
-            code: `puts "Hello ASL! The date is: #{Time.now}"`,
-          },
-        ].map((demo) => (
-          <LanguageDemoCard
-            key={demo.language}
-            language={demo.language}
-            description={demo.description}
-            code={demo.code}
-          />
-        ))}
-      </div>
-    ),
-  },
-  {
-    title: "Deployment & Automation",
-    content: (
-      <>
-        <p>
-          <b>Static Export:</b> Next.js 16 with <code>output: "export"</code> in <code>next.config.ts</code> generates static files in <code>frontend/docs</code>.<br />
-          <b>GitHub Actions:</b> Workflow builds and pushes to <code>gh-pages</code> branch.<br />
-          <b>GitHub Pages:</b> Site is served from <code>gh-pages</code> branch, folder <code>/</code>.<br />
-          <b>Continuous Deployment:</b> Every push to master triggers a rebuild and redeploy.
-        </p>
-        <Button
-          color="primary"
-          size="lg"
-          radius="full"
-          className="mt-4 shadow-xl transition-transform hover:scale-105"
-          href="https://github.com/BradleyMatera/docker_multilang_project"
-          target="_blank"
-        >
-          View Full Source on GitHub
-        </Button>
-      </>
-    ),
-  },
-  {
-    title: "Future Enhancements",
-    content: (
-      <ul className="list-disc ml-6 mt-2 text-left">
-        <li>Animated transitions, micro-interactions, and purposeful motion</li>
-        <li>Custom illustrations, SVGs, and advanced visuals</li>
-        <li>Accessibility improvements (ARIA, keyboard navigation, color contrast)</li>
-        <li>Interactive carousels, tabs, accordions for content</li>
-        <li>Expanded documentation and architecture diagrams</li>
-        <li>Performance optimizations and mobile-first design</li>
-      </ul>
-    ),
-  },
-];
+import { Divider } from "@nextui-org/react";
+import { NavBar } from "@/components/NavBar";
+import { HeroSection } from "@/components/HeroSection";
+import { FeatureHighlightsSection } from "@/components/sections/FeatureHighlightsSection";
+import { LanguageShowcaseSection } from "@/components/sections/LanguageShowcaseSection";
+import { WorkflowTabsSection } from "@/components/sections/WorkflowTabsSection";
+import { DeploymentTimelineSection } from "@/components/sections/DeploymentTimelineSection";
+import { ResourcesAccordionSection } from "@/components/sections/ResourcesAccordionSection";
+import { CallToActionSection } from "@/components/sections/CallToActionSection";
 
-export default function TutorialLandingPage() {
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-black text-white flex flex-col items-center justify-start px-4 py-8">
+    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-indigo-950 via-slate-950 to-black text-foreground">
       <NavBar />
-      <HeroSection />
-      {/* Tutorial Introduction */}
-      <section className="w-full max-w-3xl mx-auto mb-12 p-8 rounded-2xl bg-background-light/90 shadow-xl-gradient border border-primary/20">
-        <h2 className="text-4xl font-extrabold text-primary mb-6 font-display">Introduction</h2>
-        <p className="text-2xl text-foreground mb-4 font-display">
-          Welcome to the Docker Multi-Language Project tutorial! This guide walks you through building a premium, responsive static site using Next.js 16, Bun, Tailwind CSS, and NextUI.
-        </p>
-        <ul className="list-disc ml-8 text-lg text-foreground space-y-2">
-          <li><b>Project Goals:</b> Visual upgrade, modern layouts, reusable components, accessibility, and automated deployment.</li>
-          <li><b>Tech Stack:</b> Bun (runtime), Next.js 16 (App Router, TypeScript), Tailwind CSS, NextUI, GitHub Actions/Pages.</li>
-          <li><b>Overview:</b> Migrate static HTML/CSS/JS to a Next.js app, enhance with bold UI, and deploy to GitHub Pages.</li>
-        </ul>
-      </section>
-      <Divider className="my-12 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-1 rounded-full" />
-      <section className="w-full max-w-4xl mx-auto mb-16">
-        <Accordion
-          variant="splitted"
-          className="w-full"
-          defaultExpandedKeys={["0"]}
-          itemClasses={{
-            base: "mb-8 rounded-2xl shadow-xl-gradient border border-primary/10 bg-background-light/80",
-            title: "text-2xl font-bold text-primary font-display",
-            content: "text-lg text-foreground px-6 py-4 space-y-4",
-          }}
-        >
-          {steps.map((step, idx) => (
-            <AccordionItem
-              key={idx}
-              title={<span>{step.title}</span>}
-              textValue={step.title}
-            >
-              <div>{step.content}</div>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </section>
-      <footer className="mt-24 text-center text-gray-400 text-lg font-mono">
-        <Divider className="my-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-1 rounded-full" />
-        <span>
-          &copy; {new Date().getFullYear()} Docker Multi-Language Project &mdash; Built with Next.js, Bun, Tailwind, NextUI
-        </span>
-      </footer>
-      <style jsx>{`
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradientMove 4s ease-in-out infinite;
-        }
-        @keyframes gradientMove {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
+      <div className="mx-auto flex w-full max-w-screen-2xl flex-col gap-12 pb-32">
+        <HeroSection />
+        <FeatureHighlightsSection />
+        <LanguageShowcaseSection />
+        <WorkflowTabsSection />
+        <DeploymentTimelineSection />
+        <ResourcesAccordionSection />
+        <CallToActionSection />
+        <Divider className="mx-auto my-16 w-3/4 bg-gradient-to-r from-primary via-accent to-primary" />
+        <Footer />
+      </div>
     </main>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="px-6 pb-12 text-center text-sm text-foreground/60">
+      Built with Next.js 16, Bun, Tailwind, and NextUI. &copy; {new Date().getFullYear()} Docker Multi-Language Project.
+    </footer>
   );
 }
