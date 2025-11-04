@@ -1,7 +1,7 @@
-// Home page for the Docker Multi-Language Project, visually upgraded with NextUI/Tailwind
+// Premium Docker Multi-Language Showcase – NextUI/Tailwind Redesign
 
 "use client";
-import { Button } from "@nextui-org/react";
+import { Button, Card, CardHeader, CardBody, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Divider } from "@nextui-org/react";
 import { LanguageDemoCard } from "../components/LanguageDemoCard";
 
 const demos = [
@@ -44,19 +44,31 @@ const demos = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-black text-white flex flex-col items-center justify-start px-4 py-8">
-      <section className="w-full max-w-3xl text-center mb-12">
-        <h1 className="text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg">
-          🚀 Docker Multi-Language Showcase
+    <main className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-black text-white flex flex-col items-center justify-start px-4 py-8">
+      <Navbar maxWidth="xl" className="bg-black/70 backdrop-blur-lg shadow-lg mb-8 rounded-xl">
+        <NavbarBrand>
+          <span className="text-2xl font-extrabold tracking-tight text-white">🚀 Docker Multi-Language</span>
+        </NavbarBrand>
+        <NavbarContent className="hidden sm:flex gap-4" justify="end">
+          <NavbarItem>
+            <Link href="https://github.com/BradleyMatera/docker_multilang_project" target="_blank" className="text-white hover:text-primary transition-colors">GitHub</Link>
+          </NavbarItem>
+        </NavbarContent>
+      </Navbar>
+      <section className="w-full max-w-4xl text-center mb-12">
+        <h1 className="text-6xl font-extrabold mb-4 tracking-tight drop-shadow-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
+          Multi-Language Showcase
         </h1>
-        <p className="text-xl mb-6 text-gray-300">
-          Explore how different programming languages print a hello-world message with the current date and time. Modern, responsive, and visually bold.
+        <p className="text-2xl mb-6 text-gray-200 font-medium">
+          Explore how different programming languages print a hello-world message with the current date and time.<br />
+          Modern, responsive, and visually bold.
         </p>
-        <Button color="primary" size="lg" className="shadow-lg" radius="full">
+        <Button color="primary" size="lg" className="shadow-xl transition-transform hover:scale-105" radius="full">
           View on GitHub
         </Button>
       </section>
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
+      <Divider className="my-8 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-1 rounded-full" />
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl">
         {demos.map((demo) => (
           <LanguageDemoCard
             key={demo.language}
@@ -66,6 +78,23 @@ export default function HomePage() {
           />
         ))}
       </section>
+      <footer className="mt-16 text-center text-gray-400 text-sm">
+        <Divider className="my-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-1 rounded-full" />
+        <span>
+          &copy; {new Date().getFullYear()} Docker Multi-Language Project &mdash; Built with Next.js, Bun, Tailwind, NextUI
+        </span>
+      </footer>
+      <style jsx>{`
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradientMove 4s ease-in-out infinite;
+        }
+        @keyframes gradientMove {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
     </main>
   );
 }
