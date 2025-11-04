@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":["file:///Users/bradleymatera/Desktop/docker_multilang_project/frontend/app/providers.tsx"],"sourcesContent":["// Providers for HeroUI (NextUI) integration with Next.js App Router\n\n\"use client\";\nimport { useRouter } from \"next/navigation\";\nimport { NextUIProvider } from \"@nextui-org/react\";\nimport { ThemeProvider } from \"next-themes\";\n\nexport function Providers({ children }: { children: React.ReactNode }) {\n  const router = useRouter();\n  return (\n    <ThemeProvider attribute=\"class\" defaultTheme=\"system\" enableSystem>\n      <NextUIProvider navigate={router.push}>{children}</NextUIProvider>\n    </ThemeProvider>\n  );\n}\n"],"names":[],"mappings":"AAAA,oEAAoE;;;;;;AAGpE;AACA;AACA;AAHA;;;;;AAKO,SAAS,UAAU,EAAE,QAAQ,EAAiC;IACnE,MAAM,SAAS,IAAA,+IAAS;IACxB,qBACE,8OAAC,iKAAa;QAAC,WAAU;QAAQ,cAAa;QAAS,YAAY;kBACjE,cAAA,8OAAC,yLAAc;YAAC,UAAU,OAAO,IAAI;sBAAG;;;;;;;;;;;AAG9C","debugId":null}}]
+}
