@@ -5,12 +5,12 @@ import { Button } from "@nextui-org/react";
 
 export function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[60vh] py-16 px-4 text-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 via-purple-700 to-pink-700 opacity-60 blur-2xl animate-gradient"></div>
-      <h1 className="relative text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 drop-shadow-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
+    <section className="relative flex flex-col items-center justify-center min-h-[60vh] py-16 px-4 text-center overflow-hidden font-display">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-background opacity-70 blur-2xl animate-gradient"></div>
+      <h1 className="relative text-6xl md:text-7xl font-extrabold tracking-tight text-transparent mb-6 bg-gradient-to-r from-primary via-accent to-foreground bg-clip-text animate-gradient drop-shadow-xl-gradient">
         Docker Multi-Language Project
       </h1>
-      <p className="relative text-xl md:text-2xl text-gray-200 mb-8 font-medium z-10">
+      <p className="relative text-xl md:text-2xl text-foreground mb-8 font-medium z-10 drop-shadow-card">
         Bold, modern, and animated showcase of language demos.<br />
         Built with Next.js, Bun, Tailwind, NextUI.
       </p>
@@ -18,7 +18,7 @@ export function HeroSection() {
         color="primary"
         size="lg"
         radius="full"
-        className="relative shadow-xl transition-transform hover:scale-105 z-10"
+        className="relative shadow-xl-gradient transition-transform hover:scale-105 z-10 font-display"
         href="https://github.com/BradleyMatera/docker_multilang_project"
         target="_blank"
       >
