@@ -1,0 +1,6 @@
+[
+  { "label": "Containers", "value": "3 runtimes (extensible)" },
+  { "label": "Build", "value": "bunx next build" },
+  { "label": "Export", "value": "next export" },
+  { "label": "Deploy", "value": "CI → Vercel" }
+]

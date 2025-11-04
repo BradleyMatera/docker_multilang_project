@@ -1,0 +1,31 @@
+{
+  "languages": [
+    {
+      "id": "c",
+      "label": "C (GCC)",
+      "port": 7001,
+      "gradient": "from-indigo-400 to-sky-500",
+      "description": "Compiled hello-world container using GCC on Alpine.",
+      "snippet": "#include <stdio.h>\n#include <time.h>\n\nint main() {\n  time_t now = time(NULL);\n  printf(\"Hello from C at %s\", ctime(&now));\n  return 0;\n}\n",
+      "runtime": "gcc:13-alpine"
+    },
+    {
+      "id": "go",
+      "label": "Go",
+      "port": 7002,
+      "gradient": "from-teal-400 to-emerald-500",
+      "description": "Go module prints container hostname and timestamp.",
+      "snippet": "package main\n\nimport (\n  \"fmt\"\n  \"os\"\n  \"time\"\n)\n\nfunc main() {\n  fmt.Printf(\"Go container %s @ %s\\n\", os.Getenv(\"HOSTNAME\"), time.Now().Format(time.RFC3339))\n}\n",
+      "runtime": "golang:1.22-alpine"
+    },
+    {
+      "id": "python",
+      "label": "Python",
+      "port": 7003,
+      "gradient": "from-fuchsia-400 to-purple-500",
+      "description": "Flask API returning timezone-aware response.",
+      "snippet": "from flask import Flask, jsonify\nfrom datetime import datetime\n\napp = Flask(__name__)\n\n@app.route('/')\ndef root():\n  return jsonify({\"lang\": \"python\", \"time\": datetime.utcnow().isoformat()})\n\nif __name__ == '__main__':\n  app.run(host='0.0.0.0', port=7003)\n",
+      "runtime": "python:3.12-alpine"
+    }
+  ]
+}

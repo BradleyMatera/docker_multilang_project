@@ -1,0 +1,24 @@
+{
+  "timeline": [
+    {
+      "title": "Clone & Inspect",
+      "detail": "Pull the repository and review docker-compose plus language containers to understand service boundaries."
+    },
+    {
+      "title": "Bootstrap Front-End",
+      "detail": "Bun + Next.js App Router delivers the static microsite with Tailwind, NextUI, and Framer Motion."
+    },
+    {
+      "title": "Containerize Demos",
+      "detail": "Each language ships as an isolated service exposing JSON output on ports 7001-7003."
+    },
+    {
+      "title": "Proxy Outputs",
+      "detail": "API route /api/demo?lang= fetches container responses for local development and documentation."
+    },
+    {
+      "title": "Export & Deploy",
+      "detail": "Run bunx next build && bunx next export and publish the static bundle to Vercel or CloudFront via CI/CD."
+    }
+  ]
+}

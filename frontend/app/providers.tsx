@@ -7,9 +7,13 @@ import { ThemeProvider } from "next-themes";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+  const navigate = (href: string) => {
+    (router as unknown as { push: (href: string) => void }).push(href);
+  };
+
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <NextUIProvider navigate={router.push}>{children}</NextUIProvider>
+      <NextUIProvider navigate={navigate}>{children}</NextUIProvider>
     </ThemeProvider>
   );
 }

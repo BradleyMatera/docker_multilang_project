@@ -1,4 +1,5 @@
 @import "tailwindcss/preflight";
+@import "../styles/gradients.css";
 @tailwind utilities;
 
 :root {

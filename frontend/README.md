@@ -1,73 +1,82 @@
-# 🚀 Docker Multi-Language Frontend (Next.js 16 + Bun + NextUI)
+# Docker Multi-Language · Frontend
 
-Premium rebuild of the Docker multi-language hello world showcase. The site layers bold gradients, reusable NextUI/Tailwind components, and interactive storytelling to highlight each containerized runtime.
+A production-grade microsite demonstrating multi-language Docker orchestration powered by Bun + Next.js 16, Tailwind, NextUI, and Framer Motion. The site exports statically while containerized demos stream live output via `/api/demo?lang=`.
 
-## 🛠 Tech Stack
+## Architecture
 
-- Bun runtime & package manager
-- Next.js 16 (App Router, TypeScript, static export)
-- Tailwind CSS 4 + custom design tokens
-- NextUI (HeroUI) components with next-themes
-- GitHub Pages ready via `docs/` export
+| Layer | Purpose |
+| ----- | ------- |
+| Next.js + Bun | Builds the stage-based UI, exports static assets, proxies container output during local development. |
+| Docker Compose | Runs language services (`demo-c`, `demo-go`, `demo-python`) that return JSON responses. |
+| CI/CD | GitHub Actions executes `bunx next build`; deploy to Vercel/CloudFront or `gh-pages`. |
 
-## 📦 Scripts
+```
+Developer → Bun build → Static bundle (out/) → Vercel CDN
+                               ↑
+ docker compose up --build ← language demos (ports 7001-7003)
+```
+
+## Commands
 
 ```bash
-bun install          # Install dependencies
-bun run dev          # Start the Next.js dev server
-bun run lint         # ESLint (Next.js core web vitals)
-bun run build        # Production build (writes to docs/ thanks to next.config.ts)
-bun run build:pages  # Alias for build when deploying to GitHub Pages
+bun install
+bun run dev            # start Next.js locally
+bun run build          # production build (writes static site to out/)
+bun run export         # alias for bun run build
+
+# Run containerized language demos simultaneously
+cd .. && docker compose up --build
 ```
 
-## ✨ UI Highlights
+## Environment Variables
 
-- **Hero + Stats:** Layered gradients, animated SVG pulses, highlight chips, and dual CTAs.
-- **Feature Grid:** Four-card treatment explaining the visual upgrade, architecture, accessibility, and interactivity.
-- **Language Showcase:** Responsive grid plus an interactive carousel that cycles through all seven hello-world demos.
-- **Workflow Tabs:** NextUI `Tabs` component that walks through plan → build → ship with narrative checklists.
-- **Deployment Timeline:** Split timeline explaining containers → rebuild → static export → CI/CD.
-- **Resources Accordion:** Quick access to project tour, setup commands, and future extensions.
-- **Dark/Light Theme:** `ThemeSwitch` component wraps `next-themes` + NextUI for polished toggling.
-
-## 🧱 Project Structure
+Create `.env.local` in `frontend/` when running inside Docker:
 
 ```
-frontend/
-├── app/                    # Next.js App Router entrypoints
-├── components/
-│   ├── sections/           # High-level layout sections (tabs, timeline, etc.)
-│   ├── HeroSection.tsx     # Animated hero with stats
-│   ├── LanguageCarousel.tsx
-│   ├── LanguageDemoCard.tsx
-│   ├── NavBar.tsx
-│   └── ThemeSwitch.tsx
-├── lib/content.ts          # Centralized content & copy decks
-├── docs/                   # Static export for GitHub Pages
-├── tailwind.config.js
-├── next.config.ts
-└── package.json
+NEXT_PRIVATE_DEMO_HOST=http://host.docker.internal
 ```
 
-## 🧪 Testing
+Validated via `lib/env.ts` (Zod) before API usage.
 
-Unit coverage with Jest + React Testing Library targets:
+## File Map Highlights
 
-- Hero headline + CTA rendering
-- Navigation links + theme switch
-- Home page section layout smoke test
-- Language cards verifying copy snippets
+```
+app/
+  page.tsx                 # StageShell layout composed of hero + sections
+  api/demo/[lang]/route.ts # Proxies container demos per language
+components/
+  layout/StageShell.tsx
+  hero/Hero.tsx
+  language/LanguageSection.tsx
+  architecture/ArchitectureSection.tsx
+  deployment/DeploymentSection.tsx
+  deployment/CTASection.tsx
+hooks/
+  useDemoOutput.ts
+  useStageNav.ts
+lib/
+  demos.ts             # Zod schema + fetch helpers
+  env.ts               # environment validation
+```
 
-Run tests with `bun run test` (add the script via Jest if needed).
+## Deployment
 
-## 🚀 Deployment
+1. `bun run build` → `out/`
+2. Upload `out/` to Vercel (`npx vercel deploy --prebuilt --yes`) or `npx gh-pages -d out` for GitHub Pages.
+3. Optional GitHub Action provided in documentation snippet to automate.
 
-1. `bun run build:pages` → builds and exports to `docs/`.
-2. Ensure `docs/.nojekyll` exists (generated on first export).
-3. Push to GitHub and point GitHub Pages to the `/docs` folder.
+## Docker Compose Services
 
-Because `next.config.ts` sets `output: "export"` and `distDir: "docs"`, the build is Pages-ready out of the box. GitHub Actions can run the same build command for continuous deployment.
+```yaml
+services:
+  web: bun dev server (Next.js)
+  demo-c: C runtime returning JSON message
+  demo-go: Go runtime HTTP server
+  demo-python: Flask JSON endpoint
+```
 
-## 📝 Further Enhancements
+Extend by adding new folders inside `containers/` and updating `data/demos.json`.
 
-See [TODO.md](./TODO.md) for animation ideas, illustration concepts, and performance investigations queued for later iterations.
+---
+
+Built for 95+ Lighthouse scores with accessible interactions, focus-visible styling, and reduced layout shifts via Framer Motion.
