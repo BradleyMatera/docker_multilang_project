@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { demoConfig } from "@/lib/demos";
 import { env } from "@/lib/env";
@@ -13,7 +13,8 @@ export function generateStaticParams() {
   return demoConfig.languages.map((lang) => ({ lang: lang.id }));
 }
 
-export async function GET(_request: Request, { params }: { params: { lang: string } }) {
+export async function GET(_request: NextRequest, context: { params: Promise<{ lang: string }> }) {
+  const params = await context.params;
   const parsed = paramsSchema.safeParse(params);
   if (!parsed.success) {
     return NextResponse.json({ error: "Invalid language" }, { status: 400 });

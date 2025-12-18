@@ -22,6 +22,17 @@ export function useDemoOutput(): DemoState {
   const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
+    const staticMode =
+      (typeof window !== "undefined" && window.location.hostname.includes("github.io")) ||
+      process.env.NEXT_PUBLIC_STATIC_MODE === "true";
+
+    if (staticMode) {
+      const fallback = demoConfig.languages.find((lang) => lang.id === activeLang)?.snippet ?? "";
+      setOutput(fallback);
+      setStatus("Static mock (GitHub Pages)");
+      return;
+    }
+
     const controller = new AbortController();
     startTransition(() => {
       fetchDemoOutput(activeLang, controller.signal)

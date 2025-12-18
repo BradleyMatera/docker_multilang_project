@@ -33,7 +33,7 @@ export function LanguageSection() {
             <ul className="space-y-2 text-sm text-slate-200 list-disc list-inside">
               <li>Select a language tab to view its code snippet.</li>
               <li>Containers must be running (see Deployment) for live output.</li>
-              <li>If offline, we show the snippet as a fallback.</li>
+              <li>If offline or on GitHub Pages, we show the snippet as a mocked response.</li>
             </ul>
           </Card>
           <LanguageTabs demo={demo} />
