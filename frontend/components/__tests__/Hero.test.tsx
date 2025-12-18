@@ -14,7 +14,7 @@ function renderWithProviders(ui: React.ReactNode) {
 describe("Hero", () => {
   it("renders headline and actions", () => {
     renderWithProviders(<Hero />);
-    expect(screen.getByText(/Run seven languages/i)).toBeInTheDocument();
+    expect(screen.getByText(/Run containerized languages in Docker from one unified workflow./i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Explore the repository/i })).toBeInTheDocument();
   });
 });

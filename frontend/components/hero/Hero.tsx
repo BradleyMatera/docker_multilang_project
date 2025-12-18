@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, Card, CardBody } from "@nextui-org/react";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
 import demos from "@/data/demos.json";
 import { MetricsStrip } from "./MetricsStrip";
 import { motion } from "framer-motion";
@@ -9,7 +10,7 @@ export function Hero() {
   return (
     <motion.section
       id="overview"
-      className="hex-grid rounded-3xl border border-white/10 bg-black/40 px-8 py-16 shadow-2xl"
+      className="hex-grid rounded-3xl border border-white/10 bg-black/40 px-8 py-16 shadow-2xl scroll-mt-28"
       initial={{ opacity: 0, y: 48 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -31,34 +32,32 @@ export function Hero() {
               target="_blank"
               rel="noreferrer"
               size="lg"
-              radius="full"
-              color="primary"
               className="shadow-xl-gradient"
             >
               Explore the repository
             </Button>
-            <Button as="a" href="#language" variant="bordered" radius="full" size="lg" className="border-white/30 text-white">
+            <Button as="a" href="#language" variant="secondary" size="lg">
               View language demos
             </Button>
           </div>
           <MetricsStrip />
         </div>
-        <Card radius="lg" className="lg:col-span-5 border border-white/10 bg-white/5 backdrop-blur">
-          <CardBody className="space-y-4 p-8">
+        <Card className="lg:col-span-5 space-y-4">
+          <div className="space-y-3">
             <h2 className="text-xl font-semibold text-white">Container lineup</h2>
             <p className="text-sm text-slate-300">
               Each container exposes a JSON endpoint consumed by the frontend. Extend the matrix by adding new language
               folders under <code>containers/</code>.
             </p>
-            <ul className="space-y-3 text-sm text-slate-200">
-              {demos.languages.map((lang) => (
-                <li key={lang.id} className="flex items-center justify-between rounded-full border border-white/10 px-4 py-2">
-                  <span className="font-medium">{lang.label}</span>
-                  <span className="text-xs uppercase tracking-wide text-slate-400">port {lang.port}</span>
-                </li>
-              ))}
-            </ul>
-          </CardBody>
+          </div>
+          <ul className="space-y-3 text-sm text-slate-200">
+            {demos.languages.map((lang) => (
+              <li key={lang.id} className="flex items-center justify-between rounded-full border border-[var(--border-subtle)] px-4 py-2 bg-[var(--surface-2)]">
+                <span className="font-medium">{lang.label}</span>
+                <span className="text-xs uppercase tracking-wide text-slate-400">Port {lang.port}</span>
+              </li>
+            ))}
+          </ul>
         </Card>
       </div>
     </motion.section>

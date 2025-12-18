@@ -17,10 +17,10 @@ export function LanguageTabs({ demo }: Props) {
       aria-label="Language demos"
       selectedKey={activeLang}
       onSelectionChange={(key) => setLanguage(key.toString())}
-      className="mt-10"
+      className="mt-4 w-full"
       classNames={{
-        tabList: "rounded-full border border-white/10 bg-white/5 p-1",
-        tab: "px-5 py-2 text-sm font-medium data-[selected=true]:bg-gradient-to-r data-[selected=true]:from-runStart data-[selected=true]:to-runEnd data-[selected=true]:text-white rounded-full",
+        tabList: "rounded-full border border-white/10 bg-white/5 p-1 overflow-x-auto flex-nowrap",
+        tab: "px-5 py-2 text-sm font-medium whitespace-nowrap data-[selected=true]:bg-gradient-to-r data-[selected=true]:from-runStart data-[selected=true]:to-runEnd data-[selected=true]:text-white rounded-full",
       }}
     >
       {demoConfig.languages.map((language) => (

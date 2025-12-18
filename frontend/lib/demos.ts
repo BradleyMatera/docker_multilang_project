@@ -20,11 +20,11 @@ type DemoConfig = z.infer<typeof demoSchema>;
 const parsed = demoSchema.parse(demos);
 export const demoConfig: DemoConfig = parsed;
 
-export async function fetchDemoOutput(lang: string) {
+export async function fetchDemoOutput(lang: string, signal?: AbortSignal) {
   const url = `/api/demo/${encodeURIComponent(lang)}`;
-  const res = await fetch(url, { cache: "no-store" });
+  const res = await fetch(url, { cache: "no-store", signal });
   if (!res.ok) {
     throw new Error(`Failed to fetch demo output for ${lang}`);
   }
-  return (await res.json()) as { output: string };
+  return (await res.json()) as { output: string; notice?: string };
 }

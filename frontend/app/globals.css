@@ -11,6 +11,35 @@
   --accent: #ec4899;
   --font-sans: 'Geist', 'Inter', 'Montserrat', Arial, sans-serif;
   --font-mono: 'Geist Mono', Menlo, monospace;
+  --surface-1: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --success: #22c55e;
+  --danger: #ef4444;
+
+  /* Spacing scale */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 96px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-soft: 0 14px 40px -18px rgba(99, 102, 241, 0.35), 0 12px 32px -20px rgba(12, 17, 34, 0.35);
+  --shadow-strong: 0 18px 60px -20px rgba(99, 102, 241, 0.45), 0 16px 50px -22px rgba(12, 17, 34, 0.45);
+
+  /* Z layers */
+  --z-header: 50;
 }
 
 html.light {
@@ -20,6 +49,10 @@ html.light {
   --muted: #4f5774;
   --primary: #4338ca;
   --accent: #db2777;
+  --surface-1: rgba(255, 255, 255, 0.82);
+  --surface-2: rgba(255, 255, 255, 0.9);
+  --border-subtle: rgba(12, 17, 34, 0.08);
+  --border-strong: rgba(12, 17, 34, 0.14);
 }
 
 @theme inline {
@@ -47,6 +80,12 @@ body {
   margin: 0;
 }
 
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
 html.light body {
   background: radial-gradient(circle at top left, rgba(99,102,241,0.16), transparent 55%),
     radial-gradient(circle at bottom right, rgba(219,39,119,0.15), transparent 50%),
@@ -70,9 +109,7 @@ html.light body {
 }
 
 .shadow-card {
-  box-shadow:
-    0 14px 40px -18px rgba(99, 102, 241, 0.35),
-    0 12px 32px -20px rgba(12, 17, 34, 0.35);
+  box-shadow: var(--shadow-soft);
 }
 
 h1, h2, h3, h4, h5, h6 {

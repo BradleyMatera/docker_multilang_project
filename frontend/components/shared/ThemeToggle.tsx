@@ -2,11 +2,20 @@
 
 import { Switch } from "@nextui-org/react";
 import { useTheme } from "next-themes";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const ready = useMemo(() => typeof window !== "undefined" && resolvedTheme !== undefined, [resolvedTheme]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const ready = useMemo(
+    () => mounted && typeof window !== "undefined" && resolvedTheme !== undefined,
+    [mounted, resolvedTheme]
+  );
 
   if (!ready) {
     return <div className="h-10 w-16 rounded-full bg-white/5" aria-hidden />;

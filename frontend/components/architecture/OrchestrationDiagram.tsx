@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { Card } from "@/components/ui/Card";
 
 export function OrchestrationDiagram() {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+    <Card>
       <div className="grid gap-4 text-sm text-slate-300 md:grid-cols-2">
         <div className="space-y-3">
           <h3 className="text-xl font-semibold text-white">Flow</h3>
@@ -25,6 +26,6 @@ export function OrchestrationDiagram() {
           <Image src="/brand/docker-whale.svg" alt="Docker whale" fill className="object-contain p-6" />
         </div>
       </div>
-    </div>
+    </Card>
   );
 }

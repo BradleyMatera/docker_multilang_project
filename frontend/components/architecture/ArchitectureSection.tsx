@@ -9,7 +9,7 @@ export function ArchitectureSection() {
   return (
     <motion.section
       id="architecture"
-      className="space-y-10"
+      className="space-y-10 scroll-mt-28"
       initial={{ opacity: 0, y: 48 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}

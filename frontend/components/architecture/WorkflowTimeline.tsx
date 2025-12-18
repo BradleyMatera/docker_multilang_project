@@ -1,8 +1,9 @@
 import timeline from "@/data/workflow.json";
+import { Card } from "@/components/ui/Card";
 
 export function WorkflowTimeline() {
   return (
-    <div className="relative border-l border-white/10 pl-6">
+    <Card className="relative border-l border-white/10 pl-6">
       <ul className="space-y-8">
         {timeline.timeline.map((step, index) => (
           <li key={step.title} className="relative">
@@ -14,6 +15,6 @@ export function WorkflowTimeline() {
           </li>
         ))}
       </ul>
-    </div>
+    </Card>
   );
 }
