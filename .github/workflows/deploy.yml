@@ -19,6 +19,9 @@ jobs:
         run: cd frontend && bun install
 
       - name: Build static site
+        env:
+          NEXT_PUBLIC_STATIC_MODE: "true"
+          NEXT_PHASE: "phase-export"
         run: cd frontend && bun run build:pages
 
       - name: Add .nojekyll
