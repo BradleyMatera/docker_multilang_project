@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, ElementType, ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "ghost";
 type Size = "sm" | "md" | "lg";
@@ -23,30 +23,32 @@ type BaseProps = {
   fullWidth?: boolean;
 };
 
-type ButtonAsButton = BaseProps & ButtonHTMLAttributes<HTMLButtonElement> & { href?: never };
-type ButtonAsLink = BaseProps & AnchorHTMLAttributes<HTMLAnchorElement> & { href: string };
+type ButtonAsButton = BaseProps & ButtonHTMLAttributes<HTMLButtonElement> & { href?: never; as?: "button" };
+type ButtonAsLink = BaseProps & AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; as?: "a" | ElementType };
 
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 export function Button(props: ButtonProps) {
-  const { variant = "primary", size = "md", className = "", children, fullWidth = false, ...rest } = props;
+  const { variant = "primary", size = "md", className = "", children, fullWidth = false, as, ...rest } = props;
   const base =
     "inline-flex items-center justify-center gap-2 font-semibold rounded-[var(--radius-md)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--primary)] ring-offset-[var(--background)] disabled:opacity-60 disabled:cursor-not-allowed";
   const width = fullWidth ? "w-full" : "";
   const composedClass = `${base} ${variantClasses[variant]} ${sizeClasses[size]} ${width} ${className}`.trim();
 
   if ("href" in rest && rest.href) {
+    const Tag = (as ?? "a") as ElementType;
     const { href, ...anchorProps } = rest;
     return (
-      <a className={composedClass} href={href} {...anchorProps} role="button">
+      <Tag className={composedClass} href={href} {...anchorProps} role="button">
         {children}
-      </a>
+      </Tag>
     );
   }
 
+  const Tag = (as ?? "button") as ElementType;
   return (
-    <button className={composedClass} type={(rest as ButtonHTMLAttributes<HTMLButtonElement>).type ?? "button"} {...rest}>
+    <Tag className={composedClass} type={(rest as ButtonHTMLAttributes<HTMLButtonElement>).type ?? "button"} {...rest}>
       {children}
-    </button>
+    </Tag>
   );
 }
